@@ -1,6 +1,9 @@
 .nav-item {
   cursor: pointer;
+  color: black;
 }
+
 .nav-item:hover {
   color: rgb(172, 141, 100);
+  transform: scale(1.2);
 }
