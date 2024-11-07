@@ -1,5 +1,5 @@
 import React from "react";
-import NavBarLogoImage from "./NavBarLogo.png";
+import NavBarLogoImage from "../../../assets/images/NavBarLogo.png";
 import { Box, Link } from "@mui/material";
 
 const NavBarLogo = () => {

@@ -1,8 +1,9 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { useAppSelector } from "../../../store/hooks";
-import { SearchInput } from "../../../store/SearchDrawer/SearchSlice";
+import React, { useEffect, useRef, useState } from "react";
+import { useAppSelector } from "../../../../store/hooks";
+import { SearchInput } from "../../../../store/Search/SearchSlice";
 import { Box, Skeleton } from "@mui/material";
-import { searchDummyApi, SearchResult } from "../../../assets/searchDummyApi";
+import { searchDummyApi } from "../../../../utils/searchDummyApi";
+import { SearchResult } from "../../../../types/searchResult";
 
 const SearchResults = () => {
   const searchInput = useAppSelector(SearchInput);

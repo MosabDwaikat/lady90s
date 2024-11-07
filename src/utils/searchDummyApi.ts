@@ -1,8 +1,4 @@
-export interface SearchResult {
-  id: number;
-  title: string;
-  description: string;
-}
+import { SearchResult } from "../types/searchResult";
 
 const dummyData: SearchResult[] = [
   { id: 1, title: "Apple", description: "A sweet red fruit" },

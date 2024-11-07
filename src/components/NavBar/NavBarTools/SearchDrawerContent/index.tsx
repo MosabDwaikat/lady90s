@@ -2,8 +2,8 @@ import React from "react";
 import { Box, Button, InputAdornment, TextField, Typography } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import SearchResults from "./SearchResults";
-import { useAppDispatch, useAppSelector } from "../../../store/hooks";
-import { SearchInput, setSearchInput } from "../../../store/SearchDrawer/SearchSlice";
+import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
+import { SearchInput, setSearchInput } from "../../../../store/Search/SearchSlice";
 
 const SearchDrawerContent = () => {
   const searchInput = useAppSelector(SearchInput);

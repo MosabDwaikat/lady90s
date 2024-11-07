@@ -1,14 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import DrawerReducer from "./NavBarDrawer/drawerSlice";
-import SearchDrawerReducer from "./SearchDrawer/SearchDrawerSlice";
-import SearchReducer from "./SearchDrawer/SearchSlice";
-import CartDrawerReducer from "./CartDrawer/CartDrawerSlice";
+import SearchReducer from "./Search/SearchSlice";
+import CartReducer from "./Cart/CartSlice";
+
 const store = configureStore({
   reducer: {
-    drawer: DrawerReducer,
-    searchDrawer: SearchDrawerReducer,
     search: SearchReducer,
-    cartDrawer: CartDrawerReducer
+    cart: CartReducer
   }
 });
 
