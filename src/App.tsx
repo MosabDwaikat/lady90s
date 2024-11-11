@@ -4,6 +4,7 @@ import "./App.scss";
 import NavBar from "./components/NavBar";
 import { useAppDispatch } from "./store/hooks";
 import { fetchCartItems } from "./store/Cart/CartSlice";
+import Hero from "./components/Hero";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -14,6 +15,7 @@ function App() {
   return (
     <div className="App">
       <NavBar />
+      <Hero />
     </div>
   );
 }
