@@ -27,45 +27,7 @@
   overflow: clip;
   height: 100%;
 }
-.custom-dot {
-  position: relative;
-  bottom: 50px;
-  border: 2px solid white;
-  width: 13px;
-  height: 13px;
-  border-radius: 50%;
-}
-.slick-dots li.slick-active .custom-dot {
-  background-color: white;
-}
-.custom-arrow-next,
-.custom-arrow-prev {
-  width: 40px;
-  height: 40px;
-  background-color: transparent;
-  border: 1px solid white;
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: white;
-  cursor: pointer;
-  z-index: 1;
-  &.custom-arrow-next {
-    right: 15px;
-  }
 
-  &.custom-arrow-prev {
-    left: 15px;
-  }
-  &:hover {
-    background-color: #dcb27b;
-    transition: background-color 0.8s;
-  }
-}
 .slide-content {
   display: flex;
   flex-direction: column;

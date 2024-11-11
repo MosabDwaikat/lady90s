@@ -1,12 +1,13 @@
-import React, { CSSProperties, MouseEventHandler } from "react";
+import React, { CSSProperties, MouseEventHandler, useRef } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Box, Button, Typography } from "@mui/material";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import "./carousel.scss";
 import styled from "@emotion/styled";
+import CustomNextArrow from "../CustomComponents/CustomNextArrow";
+import CustomPrevArrow from "../CustomComponents/CustomPrevArrow";
+import CustomSliderDots from "../CustomComponents/CustomSliderDots";
 
 export interface SlickSliderProps {
   slides: {
@@ -17,7 +18,6 @@ export interface SlickSliderProps {
     buttonRedirect: string;
   }[];
 }
-
 interface CustomArrowProps {
   className?: string;
   style?: CSSProperties;
@@ -25,23 +25,8 @@ interface CustomArrowProps {
 }
 
 const SlickSlider = ({ slides }: SlickSliderProps) => {
-  const CustomNextArrow = (props: CustomArrowProps) => {
-    const { onClick } = props;
-    return (
-      <Box className={"custom-arrow-next"} onClick={onClick}>
-        <ArrowForwardIosIcon />
-      </Box>
-    );
-  };
+  const sliderRef = useRef<Slider>(null);
 
-  const CustomPrevArrow = (props: CustomArrowProps) => {
-    const { onClick } = props;
-    return (
-      <Box className={"custom-arrow-prev"} onClick={onClick}>
-        <ArrowBackIosIcon viewBox="-5 0 24 24" />
-      </Box>
-    );
-  };
   const CustomSlideButton = styled(Button)(() => ({
     color: "white",
     fontWeight: "700",
@@ -62,7 +47,7 @@ const SlickSlider = ({ slides }: SlickSliderProps) => {
     adaptiveHeight: true,
     nextArrow: <CustomNextArrow />,
     prevArrow: <CustomPrevArrow />,
-    customPaging: () => <Box className="custom-dot" />
+    customPaging: (index: number) => <CustomSliderDots sliderRef={sliderRef} index={index} />
   };
 
   const handleSlideButton = (buttonRedirect: string) => {
@@ -71,7 +56,7 @@ const SlickSlider = ({ slides }: SlickSliderProps) => {
 
   return (
     <Box className="slider-container">
-      <Slider {...settings}>
+      <Slider {...settings} ref={sliderRef}>
         {slides.map((slide, index) => (
           <Box className="slide" key={index}>
             <Box className="img-container">

@@ -1,0 +1,11 @@
+.custom-dot {
+  position: relative;
+  bottom: 50px;
+  border: 2px solid white;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+}
+.slick-dots li.slick-active .custom-dot {
+  background-color: white;
+}
