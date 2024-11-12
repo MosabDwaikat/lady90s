@@ -4,8 +4,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import DrawerList from "./DrawerList";
 import NavBarLogo from "./NavBarLogo";
 import NavBarTools from "./NavBarTools";
-import "./index.scss";
 import pages from "../../staticData/pages";
+import "./index.scss";
 
 const NavBar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);

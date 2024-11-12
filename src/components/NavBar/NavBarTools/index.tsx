@@ -4,11 +4,11 @@ import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import "./index.scss";
 import SearchDrawerContent from "./SearchDrawerContent";
 import CartDrawerContent from "./CartDrawerContent";
 import { useAppSelector } from "../../../store/hooks";
 import { CartItemsCount } from "../../../store/Cart/CartSlice";
+import "./index.scss";
 
 const NavBarTools = () => {
   const [searchDrawerOpen, setSearchDrawerOpen] = useState(false);

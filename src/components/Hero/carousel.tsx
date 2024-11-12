@@ -1,13 +1,13 @@
-import React, { CSSProperties, MouseEventHandler, useRef } from "react";
+import React, { useRef } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Box, Button, Typography } from "@mui/material";
-import "./carousel.scss";
 import styled from "@emotion/styled";
 import CustomNextArrow from "../CustomComponents/CustomNextArrow";
 import CustomPrevArrow from "../CustomComponents/CustomPrevArrow";
 import CustomSliderDots from "../CustomComponents/CustomSliderDots";
+import "./carousel.scss";
 
 export interface SlickSliderProps {
   slides: {
@@ -17,11 +17,6 @@ export interface SlickSliderProps {
     buttonText: string;
     buttonRedirect: string;
   }[];
-}
-interface CustomArrowProps {
-  className?: string;
-  style?: CSSProperties;
-  onClick?: MouseEventHandler<HTMLDivElement>;
 }
 
 const SlickSlider = ({ slides }: SlickSliderProps) => {

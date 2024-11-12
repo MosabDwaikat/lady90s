@@ -1,0 +1,52 @@
+.card-container {
+  text-align: center;
+  padding-bottom: 5px;
+  position: relative;
+}
+.card-img-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &:hover .img-hover {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+.card-img {
+  width: 100%;
+  cursor: pointer;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+  &:hover {
+    opacity: 0;
+  }
+}
+.img-hover {
+  opacity: 0;
+  object-fit: contain;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  cursor: pointer;
+  transition:
+    transform 1.8s ease,
+    opacity 0.8s ease;
+}
+.card-title {
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  &:hover {
+    color: rgb(86, 207, 225);
+  }
+}
+.card-price {
+  direction: rtl;
+  color: rgb(105, 105, 105);
+  font-size: 15px;
+  font-weight: 400;
+}

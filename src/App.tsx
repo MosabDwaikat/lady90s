@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-
-import "./App.scss";
 import NavBar from "./components/NavBar";
 import { useAppDispatch } from "./store/hooks";
 import { fetchCartItems } from "./store/Cart/CartSlice";
 import Hero from "./components/Hero";
 import Categories from "./components/Categories";
+import Bags from "./components/Bags";
+import "./App.scss";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -18,6 +18,7 @@ function App() {
       <NavBar />
       <Hero />
       <Categories />
+      <Bags />
     </div>
   );
 }
