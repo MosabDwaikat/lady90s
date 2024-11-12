@@ -1,6 +1,6 @@
 import { makeStyles } from "tss-react/mui";
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()((theme) => ({
   customArrowPrev: {
     width: "40px",
     height: "40px",
@@ -20,6 +20,9 @@ const useStyles = makeStyles()(() => ({
     "&:hover": {
       backgroundColor: "#dcb27b",
       transition: "background-color 0.8s"
+    },
+    [theme.breakpoints.down("md")]: {
+      display: "none"
     }
   }
 }));
