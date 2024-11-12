@@ -1,6 +1,7 @@
 import { Badge, Box, Typography } from "@mui/material";
 import React from "react";
-import "./index.scss";
+// import "./index.scss";
+import useStyles from "./index.styles";
 
 export interface CategoryProps {
   category: {
@@ -11,10 +12,12 @@ export interface CategoryProps {
 }
 
 const Category = ({ category }: CategoryProps) => {
+  const { classes } = useStyles();
+
   return (
-    <Box className="category-container">
+    <Box className={classes.categoryContainer}>
       <Badge
-        className="category-count"
+        className={classes.categoryBadge}
         max={1000}
         badgeContent={category.count}
         color="primary"
@@ -23,12 +26,12 @@ const Category = ({ category }: CategoryProps) => {
           horizontal: "left" // Can be 'left' or 'right'
         }}
       >
-        <Box className="category-img-container">
-          <img src={category.image} alt="" />
+        <Box className={classes.categoryImgContainer}>
+          <img className={classes.categoryImgContainerImg} src={category.image} alt="" />
         </Box>
       </Badge>
       <Box>
-        <Typography variant="body1" className="category-title">
+        <Typography variant="body1" className={classes.categoryTitle}>
           {category.title}
         </Typography>
       </Box>

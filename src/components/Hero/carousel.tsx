@@ -7,7 +7,8 @@ import styled from "@emotion/styled";
 import CustomNextArrow from "../CustomComponents/CustomNextArrow";
 import CustomPrevArrow from "../CustomComponents/CustomPrevArrow";
 import CustomSliderDots from "../CustomComponents/CustomSliderDots";
-import "./carousel.scss";
+// import "./carousel.scss";
+import useStyles from "./carousel.styles";
 
 export interface SlickSliderProps {
   slides: {
@@ -20,6 +21,7 @@ export interface SlickSliderProps {
 }
 
 const SlickSlider = ({ slides }: SlickSliderProps) => {
+  const { classes } = useStyles();
   const sliderRef = useRef<Slider>(null);
 
   const CustomSlideButton = styled(Button)(() => ({
@@ -42,6 +44,7 @@ const SlickSlider = ({ slides }: SlickSliderProps) => {
     adaptiveHeight: true,
     nextArrow: <CustomNextArrow />,
     prevArrow: <CustomPrevArrow />,
+    dotsClass: classes.slickDots,
     customPaging: (index: number) => <CustomSliderDots sliderRef={sliderRef} index={index} />
   };
 
@@ -50,21 +53,24 @@ const SlickSlider = ({ slides }: SlickSliderProps) => {
   };
 
   return (
-    <Box className="slider-container">
+    <Box className={classes.sliderContainer}>
       <Slider {...settings} ref={sliderRef}>
         {slides.map((slide, index) => (
-          <Box className="slide" key={index}>
-            <Box className="img-container">
-              <img className="carousel-img" src={slide.img} alt={`Slide ${index}`} />
+          <Box className={classes.slide} key={index}>
+            <Box className={classes.imgContainer}>
+              <img className={classes.carouselImg} src={slide.img} alt={`Slide ${index}`} />
             </Box>
-            <Box className="slide-content">
-              <Typography variant="body1" className="slide-text">
+            <Box className={classes.slideContent}>
+              <Typography variant="body1" className={classes.slideText}>
                 {slide.text}
               </Typography>
-              <Typography variant="body2" className="slide-subtext">
+              <Typography variant="body2" className={classes.slideSubtext}>
                 {slide.subText}
               </Typography>
-              <CustomSlideButton className="slide-button" onClick={() => handleSlideButton(slide.buttonRedirect)}>
+              <CustomSlideButton
+                className={classes.slideButton}
+                onClick={() => handleSlideButton(slide.buttonRedirect)}
+              >
                 {slide.buttonText}
               </CustomSlideButton>
             </Box>

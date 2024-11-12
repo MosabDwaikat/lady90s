@@ -5,10 +5,12 @@ import DrawerList from "./DrawerList";
 import NavBarLogo from "./NavBarLogo";
 import NavBarTools from "./NavBarTools";
 import pages from "../../staticData/pages";
-import "./index.scss";
+// import "./index.scss";
+import useStyles from "./index.styles";
 
 const NavBar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const { classes } = useStyles();
 
   const navigatetopage = () => {
     console.log("navigator");
@@ -32,7 +34,7 @@ const NavBar = () => {
             <List sx={{ display: "inline-flex", flexWrap: "wrap" }}>
               {pages.map((page, index) => (
                 <ListItem key={index} sx={{ display: "list-item", width: "auto", padding: "0" }}>
-                  <Link className="nav-link" onClick={navigatetopage}>
+                  <Link className={classes.navLink} onClick={navigatetopage}>
                     {page.title}
                   </Link>
                 </ListItem>

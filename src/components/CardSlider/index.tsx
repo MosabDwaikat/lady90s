@@ -4,13 +4,16 @@ import CustomPrevArrow from "../CustomComponents/CustomPrevArrow";
 import CustomSliderDots from "../CustomComponents/CustomSliderDots";
 import { Box } from "@mui/material";
 import Slider from "react-slick";
-import "./index.scss";
+// import "./index.scss";
+import useStyles from "./index.styles";
 
 interface CardSliderProps {
   children: React.ReactNode;
 }
 
 const CardSlider = ({ children }: CardSliderProps) => {
+  const { classes } = useStyles();
+
   const sliderRef = useRef<Slider>(null);
   const settings = {
     dots: true,
@@ -21,6 +24,7 @@ const CardSlider = ({ children }: CardSliderProps) => {
     adaptiveHeight: true,
     nextArrow: <CustomNextArrow />,
     prevArrow: <CustomPrevArrow />,
+    dotsClass: classes.slickDots,
     customPaging: (index: number) => (
       <CustomSliderDots sliderRef={sliderRef} index={index} variant="dark" slidesToScroll={settings.slidesToScroll} />
     ),
@@ -35,7 +39,7 @@ const CardSlider = ({ children }: CardSliderProps) => {
     ]
   };
   return (
-    <Box className="card-slider-container">
+    <Box className={classes.cardSliderContainer}>
       <Slider {...settings} ref={sliderRef}>
         {children}
       </Slider>

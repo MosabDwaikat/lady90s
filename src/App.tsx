@@ -4,8 +4,10 @@ import { useAppDispatch } from "./store/hooks";
 import { fetchCartItems } from "./store/Cart/CartSlice";
 import Hero from "./components/Hero";
 import Categories from "./components/Categories";
-import Bags from "./components/Bags";
 import "./App.scss";
+import newlyArrived from "./staticData/newlyArrived";
+import SliderSection from "./components/SliderSection";
+import bags from "./staticData/bags";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -18,7 +20,8 @@ function App() {
       <NavBar />
       <Hero />
       <Categories />
-      <Bags />
+      <SliderSection title="حقائب سيدات المجتمع" content={bags} />
+      <SliderSection title="وصلنا حديثاً" content={newlyArrived} />
     </div>
   );
 }

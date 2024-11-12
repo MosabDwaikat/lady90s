@@ -4,11 +4,15 @@ import React from "react";
 import categories from "../../staticData/categories";
 import Category from "./Category";
 
+import useStyles from "./index.styles";
+
 const Categories = () => {
+  const { classes } = useStyles();
+
   return (
-    <Box className="categories-container">
-      <Box className="categories-header-container">
-        <Typography className="categories-header-title" variant="body1">
+    <Box className={classes.categoriesContainer}>
+      <Box className={classes.categoriesHeaderContainer}>
+        <Typography className={classes.categoriesHeaderTitle} variant="body1">
           أصنافنا
         </Typography>
       </Box>

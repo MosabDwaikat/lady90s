@@ -2,12 +2,15 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { Box } from "@mui/material";
 import { CustomArrowProps } from "react-slick";
 import React from "react";
-import "./index.scss";
+// import "./index.scss";
+import useStyles from "./index.styles";
 
 const CustomPrevArrow = (props: CustomArrowProps) => {
+  const { classes } = useStyles();
+
   const { onClick } = props;
   return (
-    <Box className={"custom-arrow-prev"} onClick={onClick}>
+    <Box className={classes.customArrowPrev} onClick={onClick}>
       <ArrowBackIosIcon viewBox="-5 0 24 24" />
     </Box>
   );

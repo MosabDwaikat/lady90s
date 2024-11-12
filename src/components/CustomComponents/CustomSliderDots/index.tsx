@@ -1,7 +1,8 @@
 import React from "react";
 import { Box } from "@mui/material";
 import Slider from "react-slick";
-import "./index.scss";
+// import "./index.scss";
+import useStyles from "./index.styles";
 
 interface CustomSliderDotsProps {
   sliderRef: React.RefObject<Slider>;
@@ -11,10 +12,10 @@ interface CustomSliderDotsProps {
 }
 
 const CustomSliderDots = ({ sliderRef, index, variant, slidesToScroll }: CustomSliderDotsProps) => {
-  console.log(index);
+  const { classes } = useStyles();
   return (
     <Box
-      className={variant === "dark" ? "custom-dot-dark" : "custom-dot"}
+      className={variant === "dark" ? classes.customDotDark : classes.customDot}
       onClick={() => sliderRef.current?.slickGoTo(index * (slidesToScroll ? slidesToScroll : 1))}
     />
   );
