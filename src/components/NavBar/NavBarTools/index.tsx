@@ -4,16 +4,20 @@ import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import "./index.scss";
 import SearchDrawerContent from "./SearchDrawerContent";
 import CartDrawerContent from "./CartDrawerContent";
 import { useAppSelector } from "../../../store/hooks";
 import { CartItemsCount } from "../../../store/Cart/CartSlice";
+// import "./index.scss";
+import useStyles from "./index.styles";
 
 const NavBarTools = () => {
   const [searchDrawerOpen, setSearchDrawerOpen] = useState(false);
   const [cartDrawerOpen, setCartDrawerOpen] = useState(false);
   const cartItemsCount = useAppSelector(CartItemsCount);
+
+  const { classes } = useStyles();
+
   const handleWishlist = () => {
     console.log("navigate to wishlist");
   };
@@ -23,12 +27,17 @@ const NavBarTools = () => {
 
   return (
     <Box width={"160px"} display={"flex"} justifyContent={"space-between"}>
-      <SearchIcon className="nav-item" sx={{ width: "24px" }} onClick={() => setSearchDrawerOpen(true)} />
-      <PersonIcon className="nav-item" sx={{ width: "24px" }} onClick={handleAccount} />
-      <Badge className="nav-item" badgeContent={4} color="primary" onClick={handleWishlist}>
+      <SearchIcon className={classes.navItem} sx={{ width: "24px" }} onClick={() => setSearchDrawerOpen(true)} />
+      <PersonIcon className={classes.navItem} sx={{ width: "24px" }} onClick={handleAccount} />
+      <Badge className={classes.navItem} badgeContent={4} color="primary" onClick={handleWishlist}>
         <FavoriteIcon sx={{ width: "24px" }} />
       </Badge>
-      <Badge className="nav-item" badgeContent={cartItemsCount} color="primary" onClick={() => setCartDrawerOpen(true)}>
+      <Badge
+        className={classes.navItem}
+        badgeContent={cartItemsCount}
+        color="primary"
+        onClick={() => setCartDrawerOpen(true)}
+      >
         <ShoppingCartIcon sx={{ width: "24px" }} />
       </Badge>
       <Drawer anchor="left" open={searchDrawerOpen} onClose={() => setSearchDrawerOpen(false)}>

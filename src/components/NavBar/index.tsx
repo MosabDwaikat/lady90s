@@ -4,11 +4,13 @@ import MenuIcon from "@mui/icons-material/Menu";
 import DrawerList from "./DrawerList";
 import NavBarLogo from "./NavBarLogo";
 import NavBarTools from "./NavBarTools";
-import "./index.scss";
 import pages from "../../staticData/pages";
+// import "./index.scss";
+import useStyles from "./index.styles";
 
 const NavBar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const { classes } = useStyles();
 
   const navigatetopage = () => {
     console.log("navigator");
@@ -19,7 +21,7 @@ const NavBar = () => {
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
           <IconButton
-            sx={{ display: { xs: "flex", md: "none" } }}
+            sx={{ display: { xs: "flex", lg: "none" } }}
             edge="start"
             color="inherit"
             aria-label="menu"
@@ -28,11 +30,11 @@ const NavBar = () => {
             <MenuIcon />
           </IconButton>
           <NavBarLogo />
-          <Box justifyContent={"center"} flex={1} sx={{ mx: 2, display: { xs: "none", md: "flex" } }}>
+          <Box justifyContent={"center"} flex={1} sx={{ mx: 2, display: { xs: "none", lg: "flex" } }}>
             <List sx={{ display: "inline-flex", flexWrap: "wrap" }}>
               {pages.map((page, index) => (
                 <ListItem key={index} sx={{ display: "list-item", width: "auto", padding: "0" }}>
-                  <Link className="nav-link" onClick={navigatetopage}>
+                  <Link className={classes.navLink} onClick={navigatetopage}>
                     {page.title}
                   </Link>
                 </ListItem>
@@ -41,7 +43,7 @@ const NavBar = () => {
           </Box>
           <NavBarTools />
           <Drawer
-            sx={{ display: { xs: "flex", md: "none" } }}
+            sx={{ display: { xs: "flex", lg: "none" } }}
             anchor="right"
             open={drawerOpen}
             onClose={() => setDrawerOpen(false)}
