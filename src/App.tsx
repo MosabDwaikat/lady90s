@@ -8,6 +8,7 @@ import "./App.scss";
 import newlyArrived from "./staticData/newlyArrived";
 import SliderSection from "./components/SliderSection";
 import bags from "./staticData/bags";
+import Contact from "./components/Contact";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -22,6 +23,7 @@ function App() {
       <Categories />
       <SliderSection title="حقائب سيدات المجتمع" content={bags} />
       <SliderSection title="وصلنا حديثاً" content={newlyArrived} />
+      <Contact />
     </div>
   );
 }
