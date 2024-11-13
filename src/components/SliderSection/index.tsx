@@ -1,22 +1,37 @@
 import React from "react";
 import CardSlider from "../CardSlider";
 import CustomCard, { CustomCardProps } from "../CustomComponents/CustomCard";
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import Decoration from "../../assets/icons/decoration";
 import useStyles from "./index.styles";
 
 interface SliderSectionProps {
   content: CustomCardProps["content"][];
-  title: string;
+  title?: string;
+  navLink?: string;
 }
 
-const SliderSection = ({ content, title }: SliderSectionProps) => {
+const SliderSection = ({ content, title, navLink }: SliderSectionProps) => {
   const { classes } = useStyles();
+  const handleNavigate = () => {
+    console.log("navigate to " + navLink);
+  };
   return (
-    <Box className={classes.newlyArrivedContainer}>
-      <Box className={classes.newlyArrivedHeader}>
-        <Typography className={classes.newlyArrivedTitle}>{title}</Typography>
-        <Decoration />
+    <Box className={classes.sectionContainer}>
+      <Box className={classes.sectionHeader}>
+        {title && (
+          <Box className={classes.sectionTitleHeader}>
+            <Typography className={classes.sectionTitle}>{title}</Typography>
+            <Decoration />
+          </Box>
+        )}
+        {navLink && (
+          <Box className={classes.sectionNavBtnHeader}>
+            <Button className={classes.viewAllBtn} onClick={handleNavigate}>
+              عرض الكل
+            </Button>
+          </Box>
+        )}
       </Box>
       <CardSlider>
         {content.map((item, index) => (

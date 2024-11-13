@@ -1,18 +1,47 @@
 import { makeStyles } from "tss-react/mui";
 
-const useStyles = makeStyles()(() => ({
-  newlyArrivedContainer: {
+const useStyles = makeStyles()((theme) => ({
+  sectionContainer: {
     marginBottom: "40px"
   },
-  newlyArrivedHeader: {
+  sectionHeader: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    marginBottom: "40px",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column"
+    }
+  },
+  sectionTitleHeader: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     marginBottom: "40px"
   },
-  newlyArrivedTitle: {
+  sectionNavBtnHeader: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    marginBottom: "40px"
+  },
+  sectionTitle: {
     fontSize: "24px",
     fontWeight: 600
+  },
+  viewAllBtn: {
+    fontSize: "16px",
+    fontWeight: 600,
+    margin: "10px",
+    backgroundColor: "black",
+    color: "white",
+    padding: "10px 20px",
+    borderRadius: "40px",
+    cursor: "pointer",
+    transition: "background-color 0.3s ease",
+    "&:hover": {
+      backgroundColor: "rgb(172, 141, 100)"
+    }
   }
 }));
 
