@@ -5,10 +5,14 @@ import React from "react";
 // import "./index.scss";
 import useStyles from "./index.styles";
 
-const CustomPrevArrow = (props: CustomArrowProps) => {
-  const { classes } = useStyles();
+interface ArrowProps extends CustomArrowProps {
+  darkArrows?: boolean;
+}
 
-  const { onClick } = props;
+const CustomPrevArrow = (props: ArrowProps) => {
+  const { onClick, darkArrows } = props;
+  const { classes } = useStyles({ darkArrows });
+
   return (
     <Box className={classes.customArrowPrev} onClick={onClick}>
       <ArrowBackIosIcon viewBox="-5 0 24 24" />

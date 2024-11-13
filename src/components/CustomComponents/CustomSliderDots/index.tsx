@@ -1,5 +1,5 @@
 import React from "react";
-import { Box } from "@mui/material";
+import { Box, useMediaQuery, useTheme } from "@mui/material";
 import Slider from "react-slick";
 // import "./index.scss";
 import useStyles from "./index.styles";
@@ -13,10 +13,17 @@ interface CustomSliderDotsProps {
 
 const CustomSliderDots = ({ sliderRef, index, variant, slidesToScroll }: CustomSliderDotsProps) => {
   const { classes } = useStyles();
+  const theme = useTheme();
+  const breakpoint = useMediaQuery(theme.breakpoints.down("md"));
+  let currentSlidesToScroll = slidesToScroll;
+  if (breakpoint) {
+    currentSlidesToScroll = 2;
+  }
+
   return (
     <Box
       className={variant === "dark" ? classes.customDotDark : classes.customDot}
-      onClick={() => sliderRef.current?.slickGoTo(index * (slidesToScroll ? slidesToScroll : 1))}
+      onClick={() => sliderRef.current?.slickGoTo(index * (currentSlidesToScroll ? currentSlidesToScroll : 1))}
     />
   );
 };

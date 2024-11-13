@@ -12,11 +12,7 @@ const useStyles = makeStyles()(() => ({
     position: "relative",
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
-    "&:hover $imgHover": {
-      opacity: 1,
-      transform: "scale(1.2)"
-    }
+    alignItems: "center"
   },
   cardImg: {
     width: "100%",
@@ -35,7 +31,11 @@ const useStyles = makeStyles()(() => ({
     left: 0,
     width: "100%",
     cursor: "pointer",
-    transition: "transform 1.8s ease, opacity 0.8s ease"
+    transition: "transform 1.8s ease, opacity 0.8s ease",
+    "&:hover ": {
+      opacity: 1,
+      transform: "scale(1.2)"
+    }
   },
   cardTitle: {
     fontSize: "18px",

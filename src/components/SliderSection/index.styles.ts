@@ -7,7 +7,7 @@ const useStyles = makeStyles()((theme) => ({
   sectionHeader: {
     display: "flex",
     flexDirection: "row",
-    justifyContent: "space-around",
+    justifyContent: "space-between",
     marginBottom: "40px",
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column"
@@ -20,10 +20,14 @@ const useStyles = makeStyles()((theme) => ({
     marginBottom: "40px"
   },
   sectionNavBtnHeader: {
+    minWidth: "130px",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     marginBottom: "40px"
+  },
+  sectionPlaceholder: {
+    minWidth: "130px"
   },
   sectionTitle: {
     fontSize: "24px",

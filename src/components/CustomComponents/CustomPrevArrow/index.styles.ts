@@ -1,10 +1,13 @@
 import { makeStyles } from "tss-react/mui";
+interface StyleProps {
+  darkArrows?: boolean;
+}
 
-const useStyles = makeStyles()((theme) => ({
+const useStyles = makeStyles<StyleProps>()((theme, { darkArrows = false }) => ({
   customArrowPrev: {
     width: "40px",
     height: "40px",
-    backgroundColor: "transparent",
+    backgroundColor: darkArrows ? "black" : "transparent",
     border: "1px solid white",
     borderRadius: "50%",
     position: "absolute",

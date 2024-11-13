@@ -9,6 +9,7 @@ import newlyArrived from "./staticData/newlyArrived";
 import SliderSection from "./components/SliderSection";
 import bags from "./staticData/bags";
 import Contact from "./components/Contact";
+import Brands from "./components/Brands";
 import packages from "./staticData/packages";
 import SliderSectionTabs from "./components/SliderSectionTabs";
 import common from "./staticData/common";
@@ -31,6 +32,7 @@ function App() {
       <SliderSection title="بكيجات" content={packages} />
       <SliderSection title="الأكثر شيوعاً" content={common} navLink="common" />
       <SliderSectionTabs title="تسوق حسب البراند" content={tabs} />
+      <Brands />
     </div>
   );
 }

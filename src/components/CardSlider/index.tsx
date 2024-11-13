@@ -9,21 +9,23 @@ import useStyles from "./index.styles";
 
 interface CardSliderProps {
   children: React.ReactNode;
+  slidesCount?: number;
+  darkArrows?: boolean;
 }
 
-const CardSlider = ({ children }: CardSliderProps) => {
+const CardSlider = ({ darkArrows, slidesCount, children }: CardSliderProps) => {
   const { classes } = useStyles();
-
   const sliderRef = useRef<Slider>(null);
+
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToScroll: 4,
-    slidesToShow: 4,
+    slidesToScroll: slidesCount || 4,
+    slidesToShow: slidesCount || 4,
     adaptiveHeight: true,
-    nextArrow: <CustomNextArrow />,
-    prevArrow: <CustomPrevArrow />,
+    nextArrow: <CustomNextArrow darkArrows={darkArrows} />,
+    prevArrow: <CustomPrevArrow darkArrows={darkArrows} />,
     dotsClass: classes.slickDots,
     customPaging: (index: number) => (
       <CustomSliderDots sliderRef={sliderRef} index={index} variant="dark" slidesToScroll={settings.slidesToScroll} />
@@ -38,6 +40,7 @@ const CardSlider = ({ children }: CardSliderProps) => {
       }
     ]
   };
+
   return (
     <Box className={classes.cardSliderContainer}>
       <Slider {...settings} ref={sliderRef}>

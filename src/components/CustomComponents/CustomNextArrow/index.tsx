@@ -5,10 +5,13 @@ import React from "react";
 // import "./index.scss";
 import useStyles from "./index.styles";
 
-const CustomNextArrow = (props: CustomArrowProps) => {
-  const { classes } = useStyles();
+interface ArrowProps extends CustomArrowProps {
+  darkArrows?: boolean;
+}
 
-  const { onClick } = props;
+const CustomNextArrow = (props: ArrowProps) => {
+  const { onClick, darkArrows } = props;
+  const { classes } = useStyles({ darkArrows });
   return (
     <Box className={classes.customArrowNext} onClick={onClick}>
       <ArrowForwardIosIcon />
