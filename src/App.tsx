@@ -14,6 +14,7 @@ import packages from "./staticData/packages";
 import SliderSectionTabs from "./components/SliderSectionTabs";
 import common from "./staticData/common";
 import tabs from "./staticData/tabs";
+import Browse from "./components/Browse";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -33,6 +34,7 @@ function App() {
       <SliderSection title="الأكثر شيوعاً" content={common} navLink="common" />
       <SliderSectionTabs title="تسوق حسب البراند" content={tabs} />
       <Brands />
+      <Browse />
     </div>
   );
 }
