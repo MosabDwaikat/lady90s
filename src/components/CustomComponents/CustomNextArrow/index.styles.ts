@@ -1,10 +1,13 @@
 import { makeStyles } from "tss-react/mui";
+interface StyleProps {
+  backgroundColor?: string;
+}
 
-const useStyles = makeStyles()((theme) => ({
+const useStyles = makeStyles<StyleProps>()((theme, { backgroundColor = "transparent" }) => ({
   customArrowNext: {
     width: "40px",
     height: "40px",
-    backgroundColor: "transparent",
+    backgroundColor: backgroundColor,
     border: "1px solid white",
     borderRadius: "50%",
     position: "absolute",

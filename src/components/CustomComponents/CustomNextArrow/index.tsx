@@ -6,7 +6,7 @@ import React from "react";
 import useStyles from "./index.styles";
 
 const CustomNextArrow = (props: CustomArrowProps) => {
-  const { classes } = useStyles();
+  const { classes } = useStyles({});
 
   const { onClick } = props;
   return (

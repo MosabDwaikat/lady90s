@@ -9,9 +9,10 @@ import useStyles from "./index.styles";
 
 interface CardSliderProps {
   children: React.ReactNode;
+  slidesCount?: number;
 }
 
-const CardSlider = ({ children }: CardSliderProps) => {
+const CardSlider = ({ slidesCount, children }: CardSliderProps) => {
   const { classes } = useStyles();
 
   const sliderRef = useRef<Slider>(null);
@@ -19,8 +20,8 @@ const CardSlider = ({ children }: CardSliderProps) => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToScroll: 4,
-    slidesToShow: 4,
+    slidesToScroll: slidesCount || 4,
+    slidesToShow: slidesCount || 4,
     adaptiveHeight: true,
     nextArrow: <CustomNextArrow />,
     prevArrow: <CustomPrevArrow />,
