@@ -19,18 +19,21 @@ const SliderSection = ({ content, title, navLink }: SliderSectionProps) => {
   return (
     <Box className={classes.sectionContainer}>
       <Box className={classes.sectionHeader}>
+        {<Box className={classes.sectionPlaceholder}></Box>}
         {title && (
           <Box className={classes.sectionTitleHeader}>
             <Typography className={classes.sectionTitle}>{title}</Typography>
             <Decoration />
           </Box>
         )}
-        {navLink && (
+        {navLink ? (
           <Box className={classes.sectionNavBtnHeader}>
             <Button className={classes.viewAllBtn} onClick={handleNavigate}>
               عرض الكل
             </Button>
           </Box>
+        ) : (
+          <Box className={classes.sectionPlaceholder}></Box>
         )}
       </Box>
       <CardSlider>
