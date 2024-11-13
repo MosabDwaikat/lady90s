@@ -7,7 +7,7 @@ const useStyles = makeStyles()((theme) => ({
   sectionHeader: {
     display: "flex",
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     marginBottom: "40px",
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column"
