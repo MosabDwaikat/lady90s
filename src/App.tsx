@@ -15,6 +15,7 @@ import SliderSectionTabs from "./components/SliderSectionTabs";
 import common from "./staticData/common";
 import tabs from "./staticData/tabs";
 import Browse from "./components/Browse";
+import Footer from "./components/Footer";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -35,6 +36,7 @@ function App() {
       <SliderSectionTabs title="تسوق حسب البراند" content={tabs} />
       <Brands />
       <Browse />
+      <Footer />
     </div>
   );
 }

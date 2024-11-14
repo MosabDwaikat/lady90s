@@ -22,6 +22,41 @@ const theme = createTheme({
           fontFamily: codeFontFamily
         }
       }
+    },
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          variants: [
+            {
+              props: { variant: "outlined", color: "secondary" },
+              style: {
+                "&.MuiTextField-root": {
+                  "& .MuiInputLabel-root": {
+                    color: "#f5f5f5"
+                  },
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#f5f5f5"
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "#f5f5f5"
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#ffffff"
+                    },
+                    "& .MuiOutlinedInput-input": {
+                      color: "#ffffff"
+                    }
+                  },
+                  "&.Mui-focused .MuiInputLabel-root": {
+                    color: "#ffffff"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
     }
   },
   typography: {
@@ -38,7 +73,7 @@ const theme = createTheme({
       main: "#343434"
     },
     secondary: {
-      main: "#f44336"
+      main: "#ffffff"
     }
   },
   breakpoints: {

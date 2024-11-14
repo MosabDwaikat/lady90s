@@ -2,9 +2,8 @@ import { Box, Button, Tab, Tabs, Typography } from "@mui/material";
 import React, { SyntheticEvent, useState } from "react";
 import TabPanel from "./TabPanel";
 import SliderSection from "../SliderSection";
-import tabs, { TabProps } from "../../staticData/tabs";
+import { TabProps } from "../../staticData/tabs";
 import useStyles from "./index.styles";
-import { CustomCardProps } from "../CustomComponents/CustomCard";
 
 interface SliderSectionTabsProps {
   title: string;
