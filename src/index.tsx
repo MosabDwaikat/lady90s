@@ -11,7 +11,7 @@ import router from "./router";
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 
 root.render(
-  <>
+  <React.StrictMode>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
@@ -23,7 +23,7 @@ root.render(
         />
       </ThemeProvider>
     </Provider>
-  </>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
