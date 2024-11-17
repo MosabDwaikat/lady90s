@@ -1,4 +1,4 @@
-import { Box, Button, InputAdornment, Link, List, ListItem, TextField, Typography } from "@mui/material";
+import { Box, Button, Link, List, ListItem, TextField, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import React from "react";
 import useStyles from "./index.styles";
