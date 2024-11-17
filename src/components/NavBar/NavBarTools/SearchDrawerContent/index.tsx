@@ -4,13 +4,17 @@ import SearchIcon from "@mui/icons-material/Search";
 import SearchResults from "./SearchResults";
 import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
 import { SearchInput, setSearchInput } from "../../../../store/Search/SearchSlice";
+import { useNavigate } from "react-router-dom";
 
 const SearchDrawerContent = () => {
   const searchInput = useAppSelector(SearchInput);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   const handleSearch = () => {
-    console.log("navigate to search");
+    navigate("search");
   };
+
   return (
     <Box width={300}>
       <Typography variant="h6" fontFamily={"inherit"} margin={"20px"}>

@@ -15,7 +15,7 @@ const Brands = () => {
         {brands.map((brand, index) => {
           return (
             <Box className={classes.slideBox} key={index} onClick={() => handleNavigate(brand.name)}>
-              <img className={classes.brandImage} src={brand.img} alt="" />
+              <img loading="lazy" className={classes.brandImage} src={brand.img} alt="" />
             </Box>
           );
         })}

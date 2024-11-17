@@ -9,14 +9,14 @@ import Face5Icon from "@mui/icons-material/Face5";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 
 const pages = [
-  { title: "أخر المنتجات", icon: <ShoppingCartIcon /> },
-  { title: "حقائب", icon: <BusinessCenterIcon /> },
-  { title: "النساء", icon: <WomanIcon /> },
-  { title: "الرجال", icon: <ManIcon /> },
-  { title: "ساعات", icon: <WatchIcon /> },
-  { title: "محافظ", icon: <WalletIcon /> },
-  { title: "طواقي و نظارات", icon: <CheckroomIcon /> },
-  { title: "إكسسوارات و شالات", icon: <Face5Icon /> },
-  { title: "حقائب للمناسبات", icon: <ShoppingBagIcon /> }
+  { title: "أخر المنتجات", icon: <ShoppingCartIcon />, link: "latest" },
+  { title: "حقائب", icon: <BusinessCenterIcon />, link: "bags" },
+  { title: "النساء", icon: <WomanIcon />, link: "women" },
+  { title: "الرجال", icon: <ManIcon />, link: "men" },
+  { title: "ساعات", icon: <WatchIcon />, link: "watches" },
+  { title: "محافظ", icon: <WalletIcon />, link: "wallets" },
+  { title: "طواقي و نظارات", icon: <CheckroomIcon />, link: "hats" },
+  { title: "إكسسوارات و شالات", icon: <Face5Icon />, link: "accessories" },
+  { title: "حقائب للمناسبات", icon: <ShoppingBagIcon />, link: "occasion-Bags" }
 ];
 export default pages;

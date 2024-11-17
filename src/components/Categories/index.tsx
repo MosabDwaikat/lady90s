@@ -3,7 +3,6 @@ import Grid from "@mui/material/Grid2";
 import React from "react";
 import categories from "../../staticData/categories";
 import Category from "./Category";
-
 import useStyles from "./index.styles";
 
 const Categories = () => {

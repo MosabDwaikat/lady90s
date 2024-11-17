@@ -7,8 +7,8 @@ import styled from "@emotion/styled";
 import CustomNextArrow from "../CustomComponents/CustomNextArrow";
 import CustomPrevArrow from "../CustomComponents/CustomPrevArrow";
 import CustomSliderDots from "../CustomComponents/CustomSliderDots";
-// import "./carousel.scss";
 import useStyles from "./carousel.styles";
+import { useNavigate } from "react-router-dom";
 
 export interface SlickSliderProps {
   slides: {
@@ -23,6 +23,7 @@ export interface SlickSliderProps {
 const SlickSlider = ({ slides }: SlickSliderProps) => {
   const { classes } = useStyles();
   const sliderRef = useRef<Slider>(null);
+  const navigate = useNavigate();
 
   const CustomSlideButton = styled(Button)(() => ({
     color: "white",
@@ -49,7 +50,7 @@ const SlickSlider = ({ slides }: SlickSliderProps) => {
   };
 
   const handleSlideButton = (buttonRedirect: string) => {
-    console.log("navigate to " + buttonRedirect);
+    navigate(buttonRedirect);
   };
 
   return (

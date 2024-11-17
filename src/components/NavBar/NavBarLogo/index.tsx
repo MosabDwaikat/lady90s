@@ -1,10 +1,12 @@
 import React from "react";
 import NavBarLogoImage from "../../../assets/images/NavBarLogo.png";
 import { Box, Link } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const NavBarLogo = () => {
+  const navigate = useNavigate();
   const navigateToHome = () => {
-    console.log("Navigating to home page");
+    navigate("/");
   };
 
   return (
