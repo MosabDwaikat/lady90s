@@ -22,12 +22,12 @@ const Category = ({ category }: CategoryProps) => {
         badgeContent={category.count}
         color="primary"
         anchorOrigin={{
-          vertical: "top", // Can be 'top' or 'bottom'
-          horizontal: "left" // Can be 'left' or 'right'
+          vertical: "top",
+          horizontal: "left"
         }}
       >
         <Box className={classes.categoryImgContainer}>
-          <img className={classes.categoryImgContainerImg} src={category.image} alt="" />
+          <img loading="lazy" className={classes.categoryImgContainerImg} src={category.image} alt="" />
         </Box>
       </Badge>
       <Box>

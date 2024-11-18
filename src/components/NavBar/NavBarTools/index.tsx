@@ -10,19 +10,20 @@ import { useAppSelector } from "../../../store/hooks";
 import { CartItemsCount } from "../../../store/Cart/CartSlice";
 // import "./index.scss";
 import useStyles from "./index.styles";
+import { useNavigate } from "react-router-dom";
 
 const NavBarTools = () => {
   const [searchDrawerOpen, setSearchDrawerOpen] = useState(false);
   const [cartDrawerOpen, setCartDrawerOpen] = useState(false);
   const cartItemsCount = useAppSelector(CartItemsCount);
-
+  const navigate = useNavigate();
   const { classes } = useStyles();
 
   const handleWishlist = () => {
-    console.log("navigate to wishlist");
+    navigate("wishlist");
   };
   const handleAccount = () => {
-    console.log("navigate to Account");
+    navigate("account");
   };
 
   return (

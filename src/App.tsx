@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useAppDispatch } from "./store/hooks";
 import { fetchCartItems } from "./store/Cart/CartSlice";
 import AppLayout from "./components/AppLayout";
-import Home from "./pages/Home";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -10,11 +9,7 @@ function App() {
     dispatch(fetchCartItems());
   }, []);
 
-  return (
-    <AppLayout>
-      <Home />
-    </AppLayout>
-  );
+  return <AppLayout />;
 }
 
 export default App;

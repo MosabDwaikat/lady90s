@@ -7,17 +7,19 @@ import NavBarTools from "./NavBarTools";
 import pages from "../../staticData/pages";
 // import "./index.scss";
 import useStyles from "./index.styles";
+import { useNavigate } from "react-router-dom";
 
 const NavBar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const { classes } = useStyles();
+  const navigate = useNavigate();
 
-  const navigatetopage = () => {
-    console.log("navigator");
+  const navigatetopage = (link: string) => {
+    navigate(link);
   };
 
   return (
-    <AppBar position="static" color="default">
+    <AppBar position="sticky" color="default">
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
           <IconButton
@@ -34,7 +36,7 @@ const NavBar = () => {
             <List sx={{ display: "inline-flex", flexWrap: "wrap" }}>
               {pages.map((page, index) => (
                 <ListItem key={index} sx={{ display: "list-item", width: "auto", padding: "0" }}>
-                  <Link className={classes.navLink} onClick={navigatetopage}>
+                  <Link className={classes.navLink} onClick={() => navigatetopage(page.link)}>
                     {page.title}
                   </Link>
                 </ListItem>

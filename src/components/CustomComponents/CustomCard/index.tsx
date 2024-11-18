@@ -17,11 +17,12 @@ const CustomCard = ({ content }: CustomCardProps) => {
   return (
     <Box className={classes.cardContainer}>
       <Box className={classes.cardImgContainer}>
-        <img className={classes.cardImg} src={content.image} alt="" />
+        <img loading="lazy" className={classes.cardImg} src={content.image} alt="" />
         <img
           className={classes.imgHover}
           src="https://lady90s.com/cdn/shop/files/851298D9-F13E-40C4-99DB-C035D07600D0.jpg?v=1730208823&width=500"
           alt=""
+          loading="lazy"
         />
         <CustomCardTools />
       </Box>

@@ -6,20 +6,20 @@ export const slides: SlickSliderProps["slides"] = [
     text: "أفخم الساعات الرجالية والنسائية",
     subText: "",
     buttonText: "ساعات الليدي تسعين ",
-    buttonRedirect: "ساعات"
+    buttonRedirect: "watches"
   },
   {
     img: "https://lady90s.com/cdn/shop/files/2.png?v=1712956921&width=1800",
     text: "حقائب سيدات المجتمع",
     subText: "",
     buttonText: "تسوق الان ",
-    buttonRedirect: "حقائب"
+    buttonRedirect: "bags"
   },
   {
     img: "https://lady90s.com/cdn/shop/files/SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS.png?v=1713089652&width=2000",
     text: "شركة الليدي تسعين",
     subText: "تسوق قطع سيدات وسادة المجتمع",
     buttonText: "إضغط للوصول لكل المنتجات ",
-    buttonRedirect: "كل المنتجات"
+    buttonRedirect: "all"
   }
 ];
