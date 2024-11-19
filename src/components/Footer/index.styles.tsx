@@ -45,7 +45,7 @@ const useStyles = makeStyles()(() => {
       marginLeft: "10px",
       cursor: "pointer",
       "&:hover": {
-        color: "rgb(172, 141, 100)"
+        color: "rgb(220, 178, 123)"
       }
     },
     policiesContainer: {},
@@ -66,7 +66,7 @@ const useStyles = makeStyles()(() => {
       textDecoration: "none",
       cursor: "pointer",
       "&:hover": {
-        color: "rgb(172, 141, 100)"
+        color: "rgb(220, 178, 123)"
       }
     },
     stayPostedTitle: {
@@ -92,7 +92,7 @@ const useStyles = makeStyles()(() => {
       fontWeight: "600",
 
       "&:hover": {
-        backgroundColor: "rgb(172, 141, 100)"
+        backgroundColor: "rgb(220, 178, 123)"
       }
     },
     footerTailing: {
@@ -112,7 +112,7 @@ const useStyles = makeStyles()(() => {
       alignItems: "center"
     },
     footerCopyrightTag: {
-      color: "rgb(172, 141, 100)",
+      color: "rgb(220, 178, 123)",
       marginLeft: "5px"
     },
     footerDeveloper: {

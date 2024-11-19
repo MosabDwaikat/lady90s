@@ -14,7 +14,9 @@ const ErrorPage = () => {
   return (
     <Box className={classes.errorPageContainer}>
       <Typography variant="h1">Oops!</Typography>
-      <Typography>{isRouteErrorResponse(error) ? error.data : "An error occurred while fetching the page."}</Typography>
+      <Typography>
+        {isRouteErrorResponse(error) ? "Something went wrong" : "An error occurred while fetching the page."}
+      </Typography>
       <Button className={classes.goHomeBtn} onClick={navigateToHome}>
         Go to Home
       </Button>

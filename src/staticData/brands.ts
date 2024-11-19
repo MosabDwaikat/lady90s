@@ -21,7 +21,7 @@ const brands = [
   { name: "Calvin-Klein", img: "https://lady90s.com/cdn/shop/files/Calvin-Klein-logo.png?v=1686936529&width=400" },
   { name: "Prada", img: "https://lady90s.com/cdn/shop/files/Prada-Logo.png?v=1686936596&width=400" },
   { name: "Fendi", img: "https://lady90s.com/cdn/shop/files/Fendi_logo_svg.png?v=1686936675&width=400" },
-  { name: "", img: "https://lady90s.com/cdn/shop/files/5842a0dca6515b1e0ad75af5.png?v=1686936749&width=400" },
+  { name: "YSL", img: "https://lady90s.com/cdn/shop/files/5842a0dca6515b1e0ad75af5.png?v=1686936749&width=400" },
   { name: "Rolex", img: "https://lady90s.com/cdn/shop/files/275_rolex.jpg?v=1708197400&width=400" },
   { name: "Burberry", img: "https://lady90s.com/cdn/shop/files/vvvvvvvvvvvv.jpg?v=1697463268&width=400" },
   { name: "Diesel", img: "https://lady90s.com/cdn/shop/files/dddddddddd.webp?v=1708197303&width=400" }

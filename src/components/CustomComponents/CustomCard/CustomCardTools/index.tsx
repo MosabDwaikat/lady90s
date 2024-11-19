@@ -8,7 +8,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 
 import useStyles from "./index.styles";
 
-const CustomCardTools = () => {
+const CustomCardTools = ({ detailsView }: { detailsView?: boolean }) => {
   const { classes } = useStyles();
 
   const handleQuickView = () => {
@@ -33,16 +33,20 @@ const CustomCardTools = () => {
 
   return (
     <Box className={classes.cardTools}>
-      <Tooltip title="رؤية سريعة" placement="top" arrow>
-        <Button className={classes.cardBtn} onClick={handleQuickView}>
-          <VisibilityIcon />
-        </Button>
-      </Tooltip>
-      <Tooltip title="أضف إلى عربة التسوق" placement="top" arrow>
-        <Button className={classes.cardBtn} onClick={handleCart}>
-          <ShoppingCartIcon />
-        </Button>
-      </Tooltip>
+      {!detailsView && (
+        <>
+          <Tooltip title="رؤية سريعة" placement="top" arrow>
+            <Button className={classes.cardBtn} onClick={handleQuickView}>
+              <VisibilityIcon />
+            </Button>
+          </Tooltip>
+          <Tooltip title="أضف إلى عربة التسوق" placement="top" arrow>
+            <Button className={classes.cardBtn} onClick={handleCart}>
+              <ShoppingCartIcon />
+            </Button>
+          </Tooltip>
+        </>
+      )}
 
       <Tooltip title="أضف لقائمة الأمنيات" placement="top" arrow>
         <Button className={classes.cardBtn} onClick={handleWishlist}>
