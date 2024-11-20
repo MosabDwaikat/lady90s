@@ -1,6 +1,6 @@
 import { makeStyles } from "tss-react/mui";
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()((theme) => ({
   collectionToolsContainer: {
     display: "flex",
     justifyContent: "space-between",
@@ -17,7 +17,10 @@ const useStyles = makeStyles()(() => ({
     display: "none"
   },
   filterSelectContainer: {
-    minWidth: "230px"
+    minWidth: "230px",
+    [theme.breakpoints.down("sm")]: {
+      minWidth: "0"
+    }
   },
   filterSelect: {
     height: 35,

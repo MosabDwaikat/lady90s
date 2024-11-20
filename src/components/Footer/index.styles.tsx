@@ -1,6 +1,6 @@
 import { makeStyles } from "tss-react/mui";
 
-const useStyles = makeStyles()(() => {
+const useStyles = makeStyles()((theme) => {
   return {
     footerContainer: {
       backgroundColor: "black",
@@ -101,7 +101,10 @@ const useStyles = makeStyles()(() => {
       alignItems: "center",
       marginTop: "20px",
       padding: "20px 50px 10px 50px",
-      borderTop: "1px solid white"
+      borderTop: "1px solid white",
+      [theme.breakpoints.down("sm")]: {
+        flexDirection: "column"
+      }
     },
     footerTailingText: {
       fontSize: "14px",
@@ -109,14 +112,20 @@ const useStyles = makeStyles()(() => {
     },
     footerCopyright: {
       display: "flex",
-      alignItems: "center"
+      alignItems: "center",
+      [theme.breakpoints.down("sm")]: {
+        flexDirection: "column"
+      }
     },
     footerCopyrightTag: {
       color: "rgb(220, 178, 123)",
       marginLeft: "5px"
     },
     footerDeveloper: {
-      display: "flex"
+      display: "flex",
+      [theme.breakpoints.down("sm")]: {
+        flexDirection: "column"
+      }
     },
     footerDeveloperTag: {
       color: "rgb(242, 188, 0)",

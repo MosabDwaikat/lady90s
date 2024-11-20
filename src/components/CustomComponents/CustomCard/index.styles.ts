@@ -1,6 +1,6 @@
 import { makeStyles } from "tss-react/mui";
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()((theme) => ({
   cardContainer: {
     textAlign: "center",
     paddingBottom: "5px",
@@ -10,7 +10,11 @@ const useStyles = makeStyles()(() => ({
     display: "flex",
     justifyContent: "flex-start",
     alignItems: "center",
-    padding: "10px"
+    padding: "10px",
+    border: "1px solid rgb(221, 221, 221)",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column"
+    }
   },
   cardImgContainer: {
     width: "100%",
@@ -92,7 +96,10 @@ const useStyles = makeStyles()(() => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    marginRight: "20px"
+    marginRight: "20px",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column"
+    }
   },
   btnsPanelDetailsView: {
     display: "flex",
