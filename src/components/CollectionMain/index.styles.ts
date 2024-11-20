@@ -21,10 +21,26 @@ const useStyles = makeStyles()(() => ({
     width: "100%",
     display: "flex"
   },
+  drawerContainer: {
+    position: "relative"
+  },
+  sidebarDrawerBtn: {
+    position: "fixed",
+    top: "50%",
+    right: "0",
+    backgroundColor: "white",
+    padding: "5px",
+    minWidth: "40px",
+    boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.7)",
+    overflow: "hidden",
+    transition: "background-color 0.3s ease",
+    "&:hover": {
+      transform: "scale(1.2)"
+    }
+  },
+
   browserContainer: {
-    padding: "10px",
-    width: "80%",
-    minWidth: "80%"
+    padding: "10px"
   },
   collectionSidebar: {
     width: "20%",

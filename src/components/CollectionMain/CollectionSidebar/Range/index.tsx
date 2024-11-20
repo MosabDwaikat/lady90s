@@ -2,7 +2,7 @@ import { Box, Button, createTheme, Slider, ThemeProvider, Typography } from "@mu
 import React, { useEffect, useState } from "react";
 import useStyles from "./index.styles";
 import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
-import { selectPriceRange, setPriceFilter } from "../../../../store/Collection/CollectionSlice";
+import { PriceFilter, selectPriceRange, setPriceFilter } from "../../../../store/Collection/CollectionSlice";
 
 const theme = createTheme({
   direction: "rtl",
@@ -17,11 +17,12 @@ const Range = () => {
   const { classes } = useStyles();
   const dispatch = useAppDispatch();
   const [minPrice, maxPrice] = useAppSelector(selectPriceRange);
-  const [value, setValue] = useState<number[]>([minPrice, maxPrice]);
+  const priceFilter = useAppSelector(PriceFilter);
+  const [value, setValue] = useState<number[]>(priceFilter);
 
   useEffect(() => {
-    setValue([minPrice, maxPrice]);
-  }, [minPrice, maxPrice]);
+    setValue(priceFilter);
+  }, [priceFilter]);
 
   const handleChange = (event: Event, newValue: number | number[]) => {
     setValue(newValue as number[]);

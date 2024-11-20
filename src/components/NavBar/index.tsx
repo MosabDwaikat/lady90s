@@ -50,7 +50,7 @@ const NavBar = () => {
             open={drawerOpen}
             onClose={() => setDrawerOpen(false)}
           >
-            <DrawerList />
+            <DrawerList closeDrawer={() => setDrawerOpen(false)} />
           </Drawer>
         </Toolbar>
       </Container>

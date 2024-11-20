@@ -1,4 +1,4 @@
-import { Box, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Button, Drawer, useMediaQuery, useTheme } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import CollectionTools from "./CollectionTools";
 import useStyles from "./index.styles";
@@ -7,6 +7,7 @@ import CollectionSidebar from "./CollectionSidebar";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { CollectionContnet, PriceFilter, setCollectionContnet } from "../../store/Collection/CollectionSlice";
 import collectionContentProvider from "../../utils/collectionContentProvider";
+import ViewSidebarIcon from "@mui/icons-material/ViewSidebar";
 
 export enum ViewType {
   details = "details",
@@ -25,6 +26,7 @@ const ViewTypeValue = {
 
 const CollectionMain = ({ target }: { target: string }) => {
   const [view, setView] = useState<ViewType>(ViewType.view4);
+  const [sidebarDrawerOpen, setSidebarDrawerOpen] = useState(false);
   const { classes } = useStyles();
   const theme = useTheme();
   const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
@@ -53,7 +55,7 @@ const CollectionMain = ({ target }: { target: string }) => {
       <Box className={classes.collectionBody}>
         <CollectionTools setView={setView} />
         <Box className={classes.collectionMain}>
-          <Box className={classes.collectionSidebar}>
+          <Box className={classes.collectionSidebar} sx={{ display: { xs: "none", lg: "block" } }}>
             <CollectionSidebar />
           </Box>
           <Box className={classes.browserContainer}>
@@ -65,6 +67,21 @@ const CollectionMain = ({ target }: { target: string }) => {
             />
           </Box>
         </Box>
+      </Box>
+      <Box className={classes.drawerContainer} sx={{ display: { xs: "flex", lg: "none" } }}>
+        <Drawer
+          sx={{ display: { xs: "flex", lg: "none" } }}
+          anchor="right"
+          open={sidebarDrawerOpen}
+          onClose={() => setSidebarDrawerOpen(false)}
+        >
+          <Box width={300}>
+            <CollectionSidebar />
+          </Box>
+        </Drawer>
+        <Button className={classes.sidebarDrawerBtn} onClick={() => setSidebarDrawerOpen(true)}>
+          <ViewSidebarIcon sx={{ width: "30px", height: "30px" }} />
+        </Button>
       </Box>
     </Box>
   );
