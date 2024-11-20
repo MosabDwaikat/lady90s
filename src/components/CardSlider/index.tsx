@@ -63,13 +63,6 @@ const CardSlider = ({ darkArrows, slidesCount, children, arrows = true, dots = t
       <CustomSliderDots sliderRef={sliderRef} index={index} variant="dark" slidesToScroll={computedSlidesCount} />
     ),
     responsive: [
-      // {
-      //   breakpoint: 1920, // xl < 600
-      //   settings: {
-      //     slidesToShow: computedSlidesCount.xl,
-      //     slidesToScroll: computedSlidesCount.xl
-      //   }
-      // },
       {
         breakpoint: 1536, // lg < 1536
         settings: {
