@@ -8,7 +8,7 @@ const useStyles = makeStyles()(() => ({
   },
   slickDots: {
     position: "absolute",
-    bottom: "-25px",
+    top: "100%",
     display: "block",
     width: "100%",
     padding: "0",
