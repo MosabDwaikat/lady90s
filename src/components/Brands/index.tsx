@@ -11,7 +11,7 @@ const Brands = () => {
   };
   return (
     <Box className={classes.brandsContainer}>
-      <CardSlider slidesCount={6} darkArrows>
+      <CardSlider slidesCount={{ md: 6 }} darkArrows>
         {brands.map((brand, index) => {
           return (
             <Box className={classes.slideBox} key={index} onClick={() => handleNavigate(brand.name)}>

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useAppDispatch } from "./store/hooks";
 import { fetchCartItems } from "./store/Cart/CartSlice";
 import AppLayout from "./components/AppLayout";
+import ScrollToTop from "./scrollToTop";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -9,7 +10,12 @@ function App() {
     dispatch(fetchCartItems());
   }, []);
 
-  return <AppLayout />;
+  return (
+    <>
+      <ScrollToTop />
+      <AppLayout />
+    </>
+  );
 }
 
 export default App;

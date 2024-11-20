@@ -2,7 +2,6 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { Box } from "@mui/material";
 import { CustomArrowProps } from "react-slick";
 import React from "react";
-// import "./index.scss";
 import useStyles from "./index.styles";
 
 interface ArrowProps extends CustomArrowProps {

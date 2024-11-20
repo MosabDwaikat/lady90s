@@ -5,7 +5,7 @@ const useStyles = makeStyles()(() => ({
     cursor: "pointer",
     color: "black",
     "&:hover": {
-      color: "rgb(172, 141, 100)",
+      color: "rgb(220, 178, 123)",
       transform: "scale(1.2)"
     }
   }

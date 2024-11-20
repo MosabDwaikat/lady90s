@@ -17,6 +17,11 @@ const useStyles = makeStyles()(() => ({
     display: "inline-block",
     padding: "10px"
   },
+  emptyContentContainer: {
+    display: "flex",
+    minWidth: "80%",
+    width: "100%"
+  },
   loadMoreButton: {
     borderRadius: "40px",
     fontSize: "18px",

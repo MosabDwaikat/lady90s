@@ -8,7 +8,7 @@ const useStyles = makeStyles()(() => ({
     color: "black",
     textDecoration: "none",
     "&:hover": {
-      color: "rgb(172, 141, 100)"
+      color: "rgb(220, 178, 123)"
     }
   }
 }));

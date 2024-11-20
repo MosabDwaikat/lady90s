@@ -20,7 +20,7 @@ const useStyles = makeStyles()(() => ({
     justifyContent: "center",
     alignItems: "center"
   },
-  categoryImgContainerImg: {
+  categoryImg: {
     borderRadius: "50%",
     width: "100%",
     objectFit: "cover",

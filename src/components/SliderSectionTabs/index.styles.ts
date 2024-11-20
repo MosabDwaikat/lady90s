@@ -27,7 +27,7 @@ const useStyles = makeStyles()(() => ({
     cursor: "pointer",
     transition: "background-color 0.3s ease",
     "&:hover": {
-      backgroundColor: "rgb(172, 141, 100)"
+      backgroundColor: "rgb(220, 178, 123)"
     }
   }
 }));

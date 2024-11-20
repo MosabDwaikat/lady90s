@@ -9,7 +9,7 @@ const categories: CategoryProps["category"][] = [
   },
   {
     image:
-      "https://lady90s.com/cdn/shop/collections/image_fef03785-0386-4dd9-ae4e-1cdcd237cfbe.jpg?v=1697478270&width=400",
+      "https://lady90s.com/cdn/shop/collections/image_fef03785-0386-4dd9-ae4e-1cdcd237cfbe.jpg?v=1697478270&width=200",
     title: "الكروسبودي والكتف",
     count: 135
   },

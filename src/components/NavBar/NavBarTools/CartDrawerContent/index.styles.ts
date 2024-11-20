@@ -48,7 +48,7 @@ const useStyles = makeStyles()(() => ({
     borderRadius: "40px",
     fontSize: "18px",
     marginTop: "20px",
-    backgroundColor: "rgb(172, 141, 100)",
+    backgroundColor: "rgb(220, 178, 123)",
     color: "white"
   }
 }));

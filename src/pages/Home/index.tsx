@@ -6,16 +6,17 @@ import Contact from "../../components/Contact";
 import SliderSectionTabs from "../../components/SliderSectionTabs";
 import Brands from "../../components/Brands";
 import Browse from "../../components/Browse";
-import Footer from "../../components/Footer";
 import bags from "../../staticData/bags";
 import newlyArrived from "../../staticData/newlyArrived";
 import packages from "../../staticData/packages";
 import common from "../../staticData/common";
 import tabs from "../../staticData/tabs";
+import { Box } from "@mui/material";
+import cards from "../../staticData/cards";
 
 const Home = () => {
   return (
-    <div>
+    <Box>
       <Hero />
       <Categories />
       <SliderSection title="حقائب سيدات المجتمع" content={bags} />
@@ -25,9 +26,8 @@ const Home = () => {
       <SliderSection title="الأكثر شيوعاً" content={common} navLink="common" />
       <SliderSectionTabs title="تسوق حسب البراند" content={tabs} />
       <Brands />
-      <Browse />
-      <Footer />
-    </div>
+      <Browse content={cards} />
+    </Box>
   );
 };
 

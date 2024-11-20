@@ -9,7 +9,7 @@ import Face5Icon from "@mui/icons-material/Face5";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 
 const pages = [
-  { title: "أخر المنتجات", icon: <ShoppingCartIcon />, link: "latest" },
+  { title: "أخر المنتجات", icon: <ShoppingCartIcon />, link: "all" },
   { title: "حقائب", icon: <BusinessCenterIcon />, link: "bags" },
   { title: "النساء", icon: <WomanIcon />, link: "women" },
   { title: "الرجال", icon: <ManIcon />, link: "men" },

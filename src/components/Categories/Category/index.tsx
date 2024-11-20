@@ -27,7 +27,7 @@ const Category = ({ category }: CategoryProps) => {
         }}
       >
         <Box className={classes.categoryImgContainer}>
-          <img loading="lazy" className={classes.categoryImgContainerImg} src={category.image} alt="" />
+          <img loading="lazy" className={classes.categoryImg} src={category.image} alt="" />
         </Box>
       </Badge>
       <Box>

@@ -3,6 +3,8 @@ import ErrorPage from "./pages/Error";
 import Home from "./pages/Home";
 import App from "./App";
 import Search from "./pages/Search";
+import Collection from "./pages/Collection";
+import { Collections } from "./utils/collectionContentProvider";
 
 const routes = [
   {
@@ -10,8 +12,13 @@ const routes = [
     element: <App />,
     children: [
       { path: "/", element: <Home /> },
-      { path: "/search", element: <Search /> }
-      // { path: "/page", element: <Comp /> }
+      { path: "/search", element: <Search /> },
+      ...Collections.map((collection) => {
+        return {
+          path: `/${collection.target}`,
+          element: <Collection targetURL={collection.target} info={collection.info} />
+        };
+      })
     ],
     errorElement: <ErrorPage />
   }

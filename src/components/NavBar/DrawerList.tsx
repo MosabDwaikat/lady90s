@@ -4,9 +4,10 @@ import { Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from 
 import pages from "../../staticData/pages";
 import { useNavigate } from "react-router-dom";
 
-const DrawerList = () => {
+const DrawerList = ({ closeDrawer }: { closeDrawer: () => void }) => {
   const navigate = useNavigate();
   const navigatetopage = (link: string) => {
+    closeDrawer();
     navigate(link);
   };
   return (
