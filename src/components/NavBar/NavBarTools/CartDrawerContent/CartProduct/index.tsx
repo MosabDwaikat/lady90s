@@ -3,18 +3,18 @@ import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import RemoveOutlinedIcon from "@mui/icons-material/RemoveOutlined";
 import React from "react";
-import Product from "../../../../../types/product";
 import { useAppDispatch } from "../../../../../store/hooks";
 import { changeProductQuantity, deleteItemFromCart } from "../../../../../store/Cart/CartSlice";
+import { CartItemType } from "../../../../../types/cartItemType";
 
-const CartProduct = ({ product }: { product: Product }) => {
+const CartProduct = ({ item }: { item: CartItemType }) => {
   const dispatch = useAppDispatch();
 
   const deleteItemButton = (
     <Button
       sx={{ padding: 0, minWidth: 0, marginRight: "10px" }}
       color="primary"
-      onClick={() => dispatch(deleteItemFromCart(product))}
+      onClick={() => dispatch(deleteItemFromCart(item))}
     >
       <DeleteOutlinedIcon />
     </Button>
@@ -22,7 +22,7 @@ const CartProduct = ({ product }: { product: Product }) => {
   const incrementButton = (
     <Button
       sx={{ paddingX: 0, minWidth: 0, marginLeft: "10px" }}
-      onClick={() => dispatch(changeProductQuantity({ ...product, quantity: product.quantity + 1 }))}
+      onClick={() => dispatch(changeProductQuantity({ ...item, quantity: item.quantity + 1 }))}
     >
       <AddOutlinedIcon />
     </Button>
@@ -30,7 +30,7 @@ const CartProduct = ({ product }: { product: Product }) => {
   const decrementButton = (
     <Button
       sx={{ paddingX: 0, minWidth: 0, marginRight: "10px" }}
-      onClick={() => dispatch(changeProductQuantity({ ...product, quantity: product.quantity - 1 }))}
+      onClick={() => dispatch(changeProductQuantity({ ...item, quantity: item.quantity - 1 }))}
     >
       <RemoveOutlinedIcon />
     </Button>
@@ -39,11 +39,11 @@ const CartProduct = ({ product }: { product: Product }) => {
   return (
     <Box display={"flex"}>
       <Box width={"120px"} marginLeft={"20px"}>
-        <img src={product.image} alt="" width={"100%"} />
+        <img src={item.product.imgs[0]} alt="" width={"100%"} />
       </Box>
       <Box>
-        <Typography variant="body1">{product.name}</Typography>
-        <Typography variant="body2">{product.price}</Typography>
+        <Typography variant="body1">{item.product.title}</Typography>
+        <Typography variant="body2">{item.product.price}</Typography>
         <Box
           width={"120px"}
           justifyContent={"space-between"}
@@ -53,9 +53,9 @@ const CartProduct = ({ product }: { product: Product }) => {
           borderRadius={"60px"}
           marginY={"15px"}
         >
-          {product.quantity === 1 ? deleteItemButton : decrementButton}
+          {item.quantity === 1 ? deleteItemButton : decrementButton}
           <Typography variant="body1" fontWeight={700}>
-            {product.quantity}
+            {item.quantity}
           </Typography>
           {incrementButton}
         </Box>

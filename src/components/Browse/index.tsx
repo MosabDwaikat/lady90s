@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import useStyles from "./index.styles";
 import { Box, Button, LinearProgress, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid2";
-import CustomCard, { CustomCardProps } from "../CustomComponents/CustomCard";
+import CustomCard from "../CustomComponents/CustomCard";
 import Decoration from "../../assets/icons/decoration";
+import ProductType from "../../types/productType";
 
 interface BrowseProps {
   noTitle?: boolean;
   gridSize?: number;
-  content: CustomCardProps["content"][];
+  content: ProductType[];
   details?: boolean;
 }
 

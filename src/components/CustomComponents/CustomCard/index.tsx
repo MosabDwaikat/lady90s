@@ -4,12 +4,14 @@ import CustomCardTools from "./CustomCardTools";
 import useStyles from "./index.styles";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import { useNavigate } from "react-router-dom";
 
 export interface CustomCardProps {
   content: {
+    id: string;
     title: string;
     price: number;
-    image: string;
+    imgs: string[];
     sales: number;
   };
   details?: boolean;
@@ -17,6 +19,7 @@ export interface CustomCardProps {
 
 const CustomCard = ({ details, content }: CustomCardProps) => {
   const { classes } = useStyles();
+  const navigate = useNavigate();
 
   const handleQuickView = () => {
     // Handle quick view logic
@@ -27,19 +30,24 @@ const CustomCard = ({ details, content }: CustomCardProps) => {
     // Handle adding to cart logic
     alert("implement add to cart");
   };
+  const handleNavigate = () => {
+    navigate("/product/" + content.id);
+  };
 
   return (
     <Box className={details ? classes.cardContainerDetailsView : classes.cardContainer}>
       <Box className={details ? classes.cardImgContainerDetailsView : classes.cardImgContainer}>
         <img
           loading="lazy"
+          onClick={handleNavigate}
           className={details ? classes.cardImgDetailsView : classes.cardImg}
-          src={content.image}
+          src={content.imgs[0]}
           alt=""
         />
         <img
+          onClick={handleNavigate}
           className={details ? classes.imgHoverDetailsView : classes.imgHover}
-          src="https://lady90s.com/cdn/shop/files/851298D9-F13E-40C4-99DB-C035D07600D0.jpg?v=1730208823&width=500"
+          src={content.imgs[1]}
           alt=""
           loading="lazy"
         />
@@ -47,7 +55,9 @@ const CustomCard = ({ details, content }: CustomCardProps) => {
       </Box>
       <Box className={details ? classes.cardBodyDetailsView : ""}>
         <Box>
-          <Typography className={classes.cardTitle}>{content.title}</Typography>
+          <Typography onClick={handleNavigate} className={classes.cardTitle}>
+            {content.title}
+          </Typography>
           <Typography className={classes.cardPrice}>{`${content.price} شيكل`} </Typography>
         </Box>
         {details && (

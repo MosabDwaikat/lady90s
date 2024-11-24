@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "..";
-import Product from "../../types/product";
 import { getCartItemsApi } from "../../utils/getCartItemsApi";
+import { CartItemType } from "../../types/cartItemType";
 
 export const fetchCartItems = createAsyncThunk("data/fetchData", async () => {
   const response = await getCartItemsApi();
@@ -9,7 +9,7 @@ export const fetchCartItems = createAsyncThunk("data/fetchData", async () => {
 });
 
 interface CartState {
-  cartItems: Product[];
+  cartItems: CartItemType[];
   loading: "idle" | "pending" | "succeeded" | "failed"; // 'idle', 'pending', or 'succeeded'
 }
 
@@ -22,15 +22,15 @@ const CartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    setCartItems: (state, action: PayloadAction<Product[]>) => {
+    setCartItems: (state, action: PayloadAction<CartItemType[]>) => {
       state.cartItems = action.payload;
     },
-    deleteItemFromCart: (state, action: PayloadAction<Product>) => {
-      state.cartItems = state.cartItems.filter((item) => item.id !== action.payload.id);
+    deleteItemFromCart: (state, action: PayloadAction<CartItemType>) => {
+      state.cartItems = state.cartItems.filter((item) => item.product.id !== action.payload.product.id);
     },
-    changeProductQuantity: (state, action: PayloadAction<Product>) => {
+    changeProductQuantity: (state, action: PayloadAction<CartItemType>) => {
       const updatedCartItems = state.cartItems.map((item) =>
-        item.id === action.payload.id ? { ...item, quantity: action.payload.quantity } : item
+        item.product.id === action.payload.product.id ? { ...item, quantity: action.payload.quantity } : item
       );
       state.cartItems = updatedCartItems;
     }

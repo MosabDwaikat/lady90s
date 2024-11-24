@@ -1,10 +1,25 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, LoaderFunctionArgs } from "react-router-dom";
 import ErrorPage from "./pages/Error";
 import Home from "./pages/Home";
 import App from "./App";
 import Search from "./pages/Search";
 import Collection from "./pages/Collection";
 import { Collections } from "./utils/collectionContentProvider";
+import Product from "./pages/Product";
+import getProductById from "./utils/getProductById";
+
+const productLoader = async ({ params }: LoaderFunctionArgs) => {
+  const { id } = params;
+  if (!id) {
+    throw new Error("invalid id");
+  }
+  const product = await getProductById(id);
+
+  if (!product) {
+    throw new Error("Product not found");
+  }
+  return product;
+};
 
 const routes = [
   {
@@ -13,6 +28,11 @@ const routes = [
     children: [
       { path: "/", element: <Home /> },
       { path: "/search", element: <Search /> },
+      {
+        path: "/product/:id",
+        element: <Product />,
+        loader: productLoader
+      },
       ...Collections.map((collection) => {
         return {
           path: `/${collection.target}`,
@@ -20,6 +40,7 @@ const routes = [
         };
       })
     ],
+
     errorElement: <ErrorPage />
   }
 ];

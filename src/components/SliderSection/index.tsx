@@ -1,12 +1,13 @@
 import React from "react";
 import CardSlider from "../CardSlider";
-import CustomCard, { CustomCardProps } from "../CustomComponents/CustomCard";
+import CustomCard from "../CustomComponents/CustomCard";
 import { Box, Button, Typography } from "@mui/material";
 import Decoration from "../../assets/icons/decoration";
 import useStyles from "./index.styles";
+import ProductType from "../../types/productType";
 
 interface SliderSectionProps {
-  content: CustomCardProps["content"][];
+  content: ProductType[];
   title?: string;
   navLink?: string;
 }
