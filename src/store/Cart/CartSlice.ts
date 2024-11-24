@@ -10,12 +10,12 @@ export const fetchCartItems = createAsyncThunk("data/fetchData", async () => {
 
 interface CartState {
   cartItems: CartItemType[];
-  loading: "idle" | "pending" | "succeeded" | "failed"; // 'idle', 'pending', or 'succeeded'
+  loading: "idle" | "pending" | "succeeded" | "failed";
 }
 
 const initialState: CartState = {
   cartItems: [],
-  loading: "idle" // 'idle', 'pending', or 'succeeded'
+  loading: "idle"
 };
 
 const CartSlice = createSlice({

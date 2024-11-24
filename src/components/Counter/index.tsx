@@ -1,14 +1,15 @@
 import { Box, Button, Typography } from "@mui/material";
-import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
+import React from "react";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import RemoveOutlinedIcon from "@mui/icons-material/RemoveOutlined";
-import React from "react";
-import { useAppDispatch } from "../../../../../store/hooks";
-import { changeProductQuantity, deleteItemFromCart } from "../../../../../store/Cart/CartSlice";
-import { CartItemType } from "../../../../../types/cartItemType";
-import Counter from "../../../../Counter";
+import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
+import useStyles from "./index.styles";
+import { useAppDispatch } from "../../store/hooks";
+import { changeProductQuantity, deleteItemFromCart } from "../../store/Cart/CartSlice";
+import { CartItemType } from "../../types/cartItemType";
 
-const CartProduct = ({ item }: { item: CartItemType }) => {
+const Counter = ({ item }: { item: CartItemType }) => {
+  const { classes } = useStyles();
   const dispatch = useAppDispatch();
 
   const deleteItemButton = (
@@ -38,18 +39,14 @@ const CartProduct = ({ item }: { item: CartItemType }) => {
   );
 
   return (
-    <Box display={"flex"}>
-      <Box width={"120px"} marginLeft={"20px"}>
-        <img src={item.product.imgs[0]} alt="" width={"100%"} />
-      </Box>
-      <Box>
-        <Typography variant="body1">{item.product.title}</Typography>
-        <Typography variant="body2">{item.product.price}</Typography>
-        <Counter item={item} />
-        {deleteItemButton}
-      </Box>
+    <Box className={classes.count}>
+      {item.quantity === 1 ? deleteItemButton : decrementButton}
+      <Typography variant="body1" fontWeight={700}>
+        {item.quantity}
+      </Typography>
+      {incrementButton}
     </Box>
   );
 };
 
-export default CartProduct;
+export default Counter;
