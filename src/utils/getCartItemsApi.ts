@@ -1,33 +1,42 @@
-import Product from "../types/product";
+import { CartItemType } from "../types/cartItemType";
 
-export const getCartItemsApi = (): Promise<Product[]> => {
+export const getCartItemsApi = (): Promise<CartItemType[]> => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve(products);
+      resolve(items);
     }, 2000);
   });
 };
 
-const products: Product[] = [
+const items: CartItemType[] = [
   {
-    id: 1,
-    name: "Product 1",
-    price: 100,
-    quantity: 2,
-    image: "https://lady90s.com/cdn/shop/files/5F09A325-F48E-4A71-A280-CDB02D16DA49.jpg"
+    product: {
+      id: "1",
+      title: "Product 1",
+      price: 100,
+      sales: 2,
+      imgs: ["https://lady90s.com/cdn/shop/files/5F09A325-F48E-4A71-A280-CDB02D16DA49.jpg"]
+    },
+    quantity: 2
   },
   {
-    id: 2,
-    name: "Product 2",
-    price: 140,
-    quantity: 3,
-    image: "https://lady90s.com/cdn/shop/files/5F09A325-F48E-4A71-A280-CDB02D16DA49.jpg"
+    product: {
+      id: "2",
+      title: "Product 2",
+      price: 140,
+      sales: 3,
+      imgs: ["https://lady90s.com/cdn/shop/files/5F09A325-F48E-4A71-A280-CDB02D16DA49.jpg"]
+    },
+    quantity: 3
   },
   {
-    id: 3,
-    name: "Product 3",
-    price: 200,
-    quantity: 4,
-    image: "https://lady90s.com/cdn/shop/files/5F09A325-F48E-4A71-A280-CDB02D16DA49.jpg"
+    product: {
+      id: "3",
+      title: "Product 3",
+      price: 200,
+      sales: 4,
+      imgs: ["https://lady90s.com/cdn/shop/files/5F09A325-F48E-4A71-A280-CDB02D16DA49.jpg"]
+    },
+    quantity: 4
   }
 ];

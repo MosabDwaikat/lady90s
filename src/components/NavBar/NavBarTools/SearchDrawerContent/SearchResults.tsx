@@ -3,11 +3,11 @@ import { useAppSelector } from "../../../../store/hooks";
 import { SearchInput } from "../../../../store/Search/SearchSlice";
 import { Box, Skeleton } from "@mui/material";
 import { searchDummyApi } from "../../../../utils/searchDummyApi";
-import { SearchResult } from "../../../../types/searchResult";
+import { SearchResultType } from "../../../../types/searchResultType";
 
 const SearchResults = () => {
   const searchInput = useAppSelector(SearchInput);
-  const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
+  const [searchResults, setSearchResults] = useState<SearchResultType[]>([]);
   const [loading, setLoading] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const latestSearchInputRef = useRef<string | null>(null);

@@ -1,9 +1,9 @@
-import { CustomCardProps } from "../components/CustomComponents/CustomCard";
+import ProductType from "../types/productType";
 import bags from "./bags";
 
 export interface TabProps {
   label: string;
-  content: CustomCardProps["content"][];
+  content: ProductType[];
 }
 
 const tabs: TabProps[] = [

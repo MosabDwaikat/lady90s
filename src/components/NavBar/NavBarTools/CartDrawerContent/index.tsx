@@ -1,15 +1,15 @@
 import React from "react";
 import { Box, Button, Divider, Typography } from "@mui/material";
 import CartProduct from "./CartProduct";
-import Product from "../../../../types/product";
 import { useAppSelector } from "../../../../store/hooks";
 import { CartItems } from "../../../../store/Cart/CartSlice";
 import RemoveShoppingCartOutlinedIcon from "@mui/icons-material/RemoveShoppingCartOutlined";
 import { useNavigate } from "react-router-dom";
 import useStyles from "./index.styles";
+import { CartItemType } from "../../../../types/cartItemType";
 
 const CartDrawerContent = () => {
-  const products: Product[] = useAppSelector(CartItems);
+  const items: CartItemType[] = useAppSelector(CartItems);
   const navigate = useNavigate();
   const { classes } = useStyles();
 
@@ -18,7 +18,7 @@ const CartDrawerContent = () => {
     navigate(target.name);
   };
   const calculateSum = () => {
-    return products.reduce((sum, product) => sum + product.price * product.quantity, 0);
+    return items.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
   };
 
   return (
@@ -26,13 +26,13 @@ const CartDrawerContent = () => {
       <Box width={350}>
         <Typography className={classes.cartTitle}>عربة المشتريات</Typography>
         <Box className={classes.productsPanel}>
-          {products.map((product, index) => (
-            <Box key={product.id}>
-              <CartProduct product={product} />
-              {index < products.length - 1 && <Divider sx={{ marginY: "5px" }} />}
+          {items.map((item, index) => (
+            <Box key={item.product.id}>
+              <CartProduct item={item} />
+              {index < items.length - 1 && <Divider sx={{ marginY: "5px" }} />}
             </Box>
           ))}
-          {products.length === 0 && (
+          {items.length === 0 && (
             <Box className={classes.emptyCart}>
               <RemoveShoppingCartOutlinedIcon sx={{ width: "55px", height: "55px" }} />
               <Typography variant="h3">عربة المشتريات فارغة</Typography>
@@ -41,7 +41,7 @@ const CartDrawerContent = () => {
         </Box>
       </Box>
       <Box className={classes.btnsPanel}>
-        {products.length !== 0 && (
+        {items.length !== 0 && (
           <Box className={classes.summation}>
             <Typography>المجموع الفرعي :</Typography>
             <Typography>{calculateSum() + " شيكل"}</Typography>

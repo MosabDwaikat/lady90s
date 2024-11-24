@@ -1,6 +1,6 @@
 import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "..";
-import { CustomCardProps } from "../../components/CustomComponents/CustomCard";
+import ProductType from "../../types/productType";
 
 export enum SortByOptions {
   top = "top",
@@ -11,7 +11,7 @@ export enum SortByOptions {
 }
 
 interface CollectionState {
-  collectionContnet: CustomCardProps["content"][];
+  collectionContnet: ProductType[];
   priceFilter: number[];
   sortBy: SortByOptions;
 }
@@ -26,7 +26,7 @@ const CollectionSlice = createSlice({
   name: "collection",
   initialState,
   reducers: {
-    setCollectionContnet: (state, action: PayloadAction<CustomCardProps["content"][]>) => {
+    setCollectionContnet: (state, action: PayloadAction<ProductType[]>) => {
       state.collectionContnet = action.payload;
       if (action.payload.length > 0) {
         const prices = action.payload.map((item) => item.price);
@@ -53,7 +53,7 @@ export const selectPriceRange = createSelector(
     return [Math.min(...prices), Math.max(...prices)];
   }
 );
-const sortContent = (content: CustomCardProps["content"][], sortBy: SortByOptions): CustomCardProps["content"][] => {
+const sortContent = (content: ProductType[], sortBy: SortByOptions): ProductType[] => {
   const sortedContent = [...content];
 
   switch (sortBy) {
