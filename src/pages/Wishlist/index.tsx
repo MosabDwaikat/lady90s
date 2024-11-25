@@ -7,6 +7,7 @@ import { WishlistItems } from "../../store/Wishlist/WishlistSlice";
 import { ViewType, ViewTypeValue } from "../../components/CollectionMain";
 import Tools from "./Tools";
 import useStyles from "./index.styles";
+import TitleHero from "../../components/TitleHero";
 
 const Wishlist = () => {
   const items: ProductType[] = useAppSelector(WishlistItems);
@@ -27,10 +28,18 @@ const Wishlist = () => {
   }, [isMdUp, isSmDown, isMdDown, isLgDown, view]);
 
   return (
-    <Box className={classes.container}>
-      <Box className={classes.wishlistBody}>
-        {items.length > 0 && <Tools setView={setView} />}
-        <Browse content={items} noTitle gridSize={ViewTypeValue[view]} details={view === ViewType.details} />
+    <Box>
+      <TitleHero
+        content={{
+          title: "قائمة الامنيات",
+          img: "https://stjohnnb.com/wp-content/uploads/2018/11/Wishlist.png"
+        }}
+      />
+      <Box className={classes.container}>
+        <Box className={classes.wishlistBody}>
+          {items.length > 0 && <Tools setView={setView} />}
+          <Browse content={items} noTitle gridSize={ViewTypeValue[view]} details={view === ViewType.details} />
+        </Box>
       </Box>
     </Box>
   );
