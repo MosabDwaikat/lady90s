@@ -1,6 +1,6 @@
 import { makeStyles } from "tss-react/mui";
 
-const useStyles = makeStyles()((theme) => ({
+const useStyles = makeStyles()(() => ({
   count: {
     width: "120px",
     justifyContent: "space-between",

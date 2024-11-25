@@ -4,26 +4,32 @@ import ShuffleIcon from "@mui/icons-material/Shuffle";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-// import "./index.scss";
-
 import useStyles from "./index.styles";
-
-const CustomCardTools = ({ detailsView }: { detailsView?: boolean }) => {
+import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
+import ProductType from "../../../../types/productType";
+import { addItemToWishlist, deleteItemFromWishlist, WishlistItems } from "../../../../store/Wishlist/WishlistSlice";
+interface CustomCardToolsProps {
+  handleCart: () => void;
+  content: ProductType;
+  detailsView?: boolean;
+}
+const CustomCardTools = ({ detailsView, handleCart, content }: CustomCardToolsProps) => {
   const { classes } = useStyles();
+  const dispatch = useAppDispatch();
+  const wishlistItems: ProductType[] = useAppSelector(WishlistItems);
+  const isWishlisted = wishlistItems.some((item) => item.id === content.id);
 
   const handleQuickView = () => {
     // Handle quick view logic
     alert("implement Quick view");
   };
 
-  const handleCart = () => {
-    // Handle adding to cart logic
-    alert("implement add to cart");
-  };
-
   const handleWishlist = () => {
-    // Handle adding to wishlist logic
-    alert("implement add to wishlist");
+    if (isWishlisted) {
+      dispatch(deleteItemFromWishlist(content));
+    } else {
+      dispatch(addItemToWishlist(content));
+    }
   };
 
   const handleCompare = () => {
@@ -48,8 +54,12 @@ const CustomCardTools = ({ detailsView }: { detailsView?: boolean }) => {
         </>
       )}
 
-      <Tooltip title="أضف لقائمة الأمنيات" placement="top" arrow>
-        <Button className={classes.cardBtn} onClick={handleWishlist}>
+      <Tooltip title={isWishlisted ? "ازالة من قائمة الامنيات" : "أضف لقائمة الأمنيات"} placement="top" arrow>
+        <Button
+          className={classes.cardBtn}
+          onClick={handleWishlist}
+          sx={{ backgroundColor: isWishlisted ? "rgb(232, 30, 99) !important" : "white" }}
+        >
           <FavoriteIcon />
         </Button>
       </Tooltip>

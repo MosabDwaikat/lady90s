@@ -6,11 +6,18 @@ import useStyles from "./index.styles";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import ShuffleIcon from "@mui/icons-material/Shuffle";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import { addItemToCart } from "../../../store/Cart/CartSlice";
+import ProductType from "../../../types/productType";
+import { addItemToWishlist, deleteItemFromWishlist, WishlistItems } from "../../../store/Wishlist/WishlistSlice";
 
-const Tools = () => {
+const Tools = ({ product }: { product: ProductType }) => {
   const [quantity, setQuantity] = useState(1);
   const [isShaking, setIsShaking] = useState(false);
   const { classes } = useStyles();
+  const dispatch = useAppDispatch();
+  const wishlistItems: ProductType[] = useAppSelector(WishlistItems);
+  const isWishlisted = wishlistItems.some((item) => item.id === product.id);
 
   const handleIncrement = () => {
     setQuantity(quantity + 1);
@@ -23,13 +30,19 @@ const Tools = () => {
   };
 
   const handleWishlist = () => {
-    // Handle adding to wishlist logic
-    alert("implement add to wishlist");
+    if (isWishlisted) {
+      dispatch(deleteItemFromWishlist(product));
+    } else {
+      dispatch(addItemToWishlist(product));
+    }
   };
 
   const handleCompare = () => {
     // Handle comparing logic
     alert("implement compare");
+  };
+  const handleAddToCart = () => {
+    dispatch(addItemToCart({ product: product, quantity: quantity }));
   };
 
   useEffect(() => {
@@ -54,12 +67,17 @@ const Tools = () => {
           <AddOutlinedIcon />
         </Button>
       </Box>
-      <Button className={classes.addToCartBtn + " " + (isShaking ? "shake" : "")}>
+      <Button className={classes.addToCartBtn + " " + (isShaking ? "shake" : "")} onClick={handleAddToCart}>
         <ShoppingCartIcon />
         أضف إلى عربة التسوق
       </Button>
-      <Tooltip title="أضف لقائمة الأمنيات" placement="top" arrow>
-        <Button className={classes.roundBtn} onClick={handleWishlist}>
+
+      <Tooltip title={isWishlisted ? "ازالة من قائمة الامنيات" : "أضف لقائمة الأمنيات"} placement="top" arrow>
+        <Button
+          className={classes.roundBtn}
+          onClick={handleWishlist}
+          sx={{ backgroundColor: isWishlisted ? "rgb(232, 30, 99) !important" : "white" }}
+        >
           <FavoriteIcon />
         </Button>
       </Tooltip>

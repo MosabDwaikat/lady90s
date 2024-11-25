@@ -8,6 +8,7 @@ import { Collections } from "./utils/collectionContentProvider";
 import Product from "./pages/Product";
 import getProductById from "./utils/getProductById";
 import Cart from "./pages/Cart";
+import Wishlist from "./pages/Wishlist";
 
 const productLoader = async ({ params }: LoaderFunctionArgs) => {
   const { id } = params;
@@ -30,6 +31,7 @@ const routes = [
       { path: "/", element: <Home /> },
       { path: "/search", element: <Search /> },
       { path: "/cart", element: <Cart /> },
+      { path: "/wishlist", element: <Wishlist /> },
       {
         path: "/product/:id",
         element: <Product />,

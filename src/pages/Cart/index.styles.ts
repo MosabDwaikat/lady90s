@@ -57,6 +57,47 @@ const useStyles = makeStyles()((theme) => ({
     [theme.breakpoints.down("md")]: {
       padding: "10px"
     }
+  },
+  sumPanel: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "60px 10px 30px 10px",
+    [theme.breakpoints.down("md")]: {
+      flexDirection: "column",
+      alignItems: "flex-start"
+    }
+  },
+  discountPanel: {
+    fontWeight: "600"
+  },
+  discountPanelText: {
+    fontWeight: "600",
+    marginBottom: "10px"
+  },
+  submitPanel: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    alignItems: "end"
+  },
+  submitPanelText: {
+    fontWeight: "600",
+    fontSize: "18px",
+    marginLeft: "5px"
+  },
+  submitPanelSum: {
+    display: "flex"
+  },
+  submitBtn: {
+    backgroundColor: "rgb(220, 178, 123)",
+    color: "white",
+    fontWeight: "600",
+    marginTop: "20px",
+    fontSize: "18px",
+    padding: "10px 45px",
+    borderRadius: "40px",
+    cursor: "pointer"
   }
 }));
 

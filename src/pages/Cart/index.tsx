@@ -1,16 +1,5 @@
-import {
-  Box,
-  Button,
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Typography
-} from "@mui/material";
-import React, { Component } from "react";
+import { Box, Button, TextField, Typography } from "@mui/material";
+import React, { ChangeEvent, useState } from "react";
 import TitleHero from "../../components/TitleHero";
 import useStyles from "./index.styles";
 import { CartItemType } from "../../types/cartItemType";
@@ -23,6 +12,15 @@ const Cart = () => {
   const { classes } = useStyles();
   const items: CartItemType[] = useAppSelector(CartItems);
   const dispatch = useAppDispatch();
+  const [discountCode, setDiscountCode] = useState("");
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setDiscountCode(e.target.value);
+  };
+
+  const calculateSum = () => {
+    return items.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
+  };
 
   return (
     <Box>
@@ -76,7 +74,20 @@ const Cart = () => {
             </Box>
           ))}
 
-          <Box>sum</Box>
+          <Box className={classes.sumPanel}>
+            <Box className={classes.discountPanel}>
+              <Typography className={classes.discountPanelText}>كوبون الخصم :</Typography>
+              <Typography className={classes.discountPanelText}>كود الخصم سيعمل في صفحة إنهاء الطلب</Typography>
+              <TextField fullWidth label="كود الخصم" variant="outlined" value={discountCode} onChange={handleChange} />
+            </Box>
+            <Box className={classes.submitPanel}>
+              <Box className={classes.submitPanelSum}>
+                <Typography className={classes.submitPanelText}>المجموع الفرعي:</Typography>
+                <Typography className={classes.submitPanelText}>{calculateSum() + " شيكل"}</Typography>
+              </Box>
+              <Button className={classes.submitBtn}>إستكمال الطلب</Button>
+            </Box>
+          </Box>
         </Box>
       </Box>
     </Box>

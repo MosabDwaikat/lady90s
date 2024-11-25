@@ -16,7 +16,7 @@ export enum ViewType {
   view3 = "view3",
   view4 = "view4"
 }
-const ViewTypeValue = {
+export const ViewTypeValue = {
   [ViewType.details]: 12,
   [ViewType.view1]: 12,
   [ViewType.view2]: 6,

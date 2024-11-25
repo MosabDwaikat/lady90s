@@ -10,14 +10,14 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import XIcon from "@mui/icons-material/X";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import ProductType from "../../types/productType";
 
 interface ProductDetailsProps {
-  title: string;
-  price: number;
+  product: ProductType;
   handleReturnPolicyOpen: () => void;
 }
 
-const ProductDetails = ({ title, price, handleReturnPolicyOpen }: ProductDetailsProps) => {
+const ProductDetails = ({ product, handleReturnPolicyOpen }: ProductDetailsProps) => {
   const { classes } = useStyles();
   const [wrapping, setWrapping] = useState(false);
   const [gift, setGift] = useState(false);
@@ -31,11 +31,12 @@ const ProductDetails = ({ title, price, handleReturnPolicyOpen }: ProductDetails
     if (event.target.ariaLabel === "wrapping") setWrapping(event.target.checked);
     if (event.target.ariaLabel === "gift") setGift(event.target.checked);
   };
+
   return (
     <Box>
-      <Typography className={classes.productTitle}>{title}</Typography>
+      <Typography className={classes.productTitle}>{product.title}</Typography>
       <Typography className={classes.productPriceTag}>السعر : </Typography>
-      <Typography className={classes.productPrice}>{price + " شيكل"}</Typography>
+      <Typography className={classes.productPrice}>{product.price + " شيكل"}</Typography>
       <Box className={classes.additionBox} onClick={() => setWrapping(!wrapping)}>
         <Box>
           <Typography className={classes.additionDetailsText}>تغليف شفاف مع شبرة</Typography>
@@ -67,15 +68,15 @@ const ProductDetails = ({ title, price, handleReturnPolicyOpen }: ProductDetails
         <TextField
           label="ملاحظات"
           multiline
-          rows={4} // Number of visible rows
+          rows={4}
           value={notes}
           onChange={handleNotesChange}
-          variant="outlined" // Change to "filled" or "standard" as needed
+          variant="outlined"
           fullWidth
         />
       </Box>
       <Box className={classes.btnsContainer}>
-        <Tools />
+        <Tools product={product} />
       </Box>
       <Box className={classes.linksContainer}>
         <Typography onClick={handleReturnPolicyOpen} className={classes.link}>

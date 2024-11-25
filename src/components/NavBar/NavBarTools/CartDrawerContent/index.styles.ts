@@ -7,16 +7,25 @@ const useStyles = makeStyles()(() => ({
     flexDirection: "column",
     justifyContent: "space-between"
   },
+  bodyPanel: {
+    width: "350px",
+    overflow: "hidden",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center"
+  },
   cartTitle: {
     variant: "h6",
     fontFamily: "inherit",
     margin: "20px"
   },
   productsPanel: {
-    width: 350,
+    width: "350px",
     padding: "20px",
     borderTop: "1px solid lightgrey",
-    borderBottom: "1px solid lightgrey"
+    borderBottom: "1px solid lightgrey",
+    overflow: "auto"
   },
   emptyCart: {
     display: "flex",
