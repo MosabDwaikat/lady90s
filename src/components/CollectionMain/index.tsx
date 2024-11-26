@@ -1,4 +1,4 @@
-import { Box, Button, Drawer, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Button, Drawer } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import CollectionTools from "./CollectionTools";
 import useStyles from "./index.styles";
@@ -8,43 +8,15 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { CollectionContnet, PriceFilter, setCollectionContnet } from "../../store/Collection/CollectionSlice";
 import collectionContentProvider from "../../utils/collectionContentProvider";
 import ViewSidebarIcon from "@mui/icons-material/ViewSidebar";
-
-export enum ViewType {
-  details = "details",
-  view1 = "view1",
-  view2 = "view2",
-  view3 = "view3",
-  view4 = "view4"
-}
-export const ViewTypeValue = {
-  [ViewType.details]: 12,
-  [ViewType.view1]: 12,
-  [ViewType.view2]: 6,
-  [ViewType.view3]: 4,
-  [ViewType.view4]: 3
-};
+import useResponsiveView, { ViewType, ViewTypeValue } from "../../hooks/useResponsiveView";
 
 const CollectionMain = ({ target }: { target: string }) => {
-  const [view, setView] = useState<ViewType>(ViewType.view4);
   const [sidebarDrawerOpen, setSidebarDrawerOpen] = useState(false);
   const { classes } = useStyles();
-  const theme = useTheme();
-  const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
-  const isMdDown = useMediaQuery(theme.breakpoints.down("md"));
-  const isLgDown = useMediaQuery(theme.breakpoints.down("lg"));
-  const isSmDown = useMediaQuery(theme.breakpoints.down("sm"));
-
+  const { view, setView } = useResponsiveView(ViewType.view4);
   const dispatch = useAppDispatch();
   const content = useAppSelector(CollectionContnet);
   const priceFilter = useAppSelector(PriceFilter);
-
-  useEffect(() => {
-    if (isSmDown && (view === ViewType.view2 || view === ViewType.view3 || view === ViewType.view4))
-      setView(ViewType.view1);
-    if (isMdDown && (view === ViewType.view3 || view === ViewType.view4)) setView(ViewType.view2);
-    if (isLgDown && view === ViewType.view4) setView(ViewType.view3);
-    if (isMdUp && view === ViewType.view1) setView(ViewType.view2);
-  }, [isMdUp, isSmDown, isMdDown, isLgDown, view]);
 
   useEffect(() => {
     dispatch(setCollectionContnet(collectionContentProvider(target)));

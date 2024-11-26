@@ -1,10 +1,10 @@
 import { Box, Button } from "@mui/material";
 import React, { Dispatch, SetStateAction, SyntheticEvent } from "react";
-import { ViewType } from "../../../components/CollectionMain";
 import useStyles from "./index.styles";
 import { TfiLayoutGrid2Alt, TfiLayoutGrid3Alt, TfiLayoutGrid4Alt } from "react-icons/tfi";
 import { TbListDetails } from "react-icons/tb";
 import { PiRowsFill } from "react-icons/pi";
+import { ViewType } from "../../../hooks/useResponsiveView";
 
 const Tools = ({ setView }: { setView: Dispatch<SetStateAction<ViewType>> }) => {
   const { classes } = useStyles();

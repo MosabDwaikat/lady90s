@@ -4,9 +4,9 @@ import { TbListDetails } from "react-icons/tb";
 import { PiRowsFill } from "react-icons/pi";
 import { Box, Button, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material";
 import useStyles from "./index.styles";
-import { ViewType } from "..";
 import { setSortBy, SortBy, SortByOptions } from "../../../store/Collection/CollectionSlice";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import { ViewType } from "../../../hooks/useResponsiveView";
 
 const CollectionTools = ({ setView }: { setView: Dispatch<SetStateAction<ViewType>> }) => {
   const { classes } = useStyles();

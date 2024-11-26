@@ -52,7 +52,7 @@ const NavBarTools = () => {
         <ShoppingCartIcon sx={{ width: "24px" }} />
       </Badge>
       <Drawer anchor="left" open={searchDrawerOpen} onClose={() => setSearchDrawerOpen(false)}>
-        <SearchDrawerContent />
+        <SearchDrawerContent closeDrawer={() => setSearchDrawerOpen(false)} />
       </Drawer>
       <Drawer anchor="left" open={cartDrawerOpen} onClose={() => setCartDrawerOpen(false)}>
         <CartDrawerContent closeDrawer={() => setCartDrawerOpen(false)} />

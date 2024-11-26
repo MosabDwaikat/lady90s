@@ -3,16 +3,18 @@ import { Box, Button, InputAdornment, TextField, Typography } from "@mui/materia
 import SearchIcon from "@mui/icons-material/Search";
 import SearchResults from "./SearchResults";
 import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
-import { SearchInput, setSearchInput } from "../../../../store/Search/SearchSlice";
+import { resetDrawerOnNavigate, SearchInput, setSearchInput } from "../../../../store/Search/SearchSlice";
 import { useNavigate } from "react-router-dom";
 
-const SearchDrawerContent = () => {
+const SearchDrawerContent = ({ closeDrawer }: { closeDrawer: () => void }) => {
   const searchInput = useAppSelector(SearchInput);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const handleSearch = () => {
-    navigate("search");
+    navigate("search/" + searchInput);
+    closeDrawer();
+    dispatch(resetDrawerOnNavigate());
   };
 
   return (
