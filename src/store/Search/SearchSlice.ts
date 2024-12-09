@@ -4,11 +4,13 @@ import { RootState } from "..";
 interface SearchState {
   searchInput: string;
   keywordChanged: boolean;
+  searchDrawerOpen: boolean;
 }
 
 const initialState: SearchState = {
   searchInput: "",
-  keywordChanged: false
+  keywordChanged: false,
+  searchDrawerOpen: false
 };
 
 const SearchSlice = createSlice({
@@ -24,10 +26,18 @@ const SearchSlice = createSlice({
     },
     setNewSearchLoaded: (state) => {
       state.keywordChanged = false;
+    },
+    openSearchDrawer: (state) => {
+      state.searchDrawerOpen = true;
+    },
+    closeSearchDrawer: (state) => {
+      state.searchDrawerOpen = false;
     }
   }
 });
 export const SearchInput = (state: RootState) => state.search.searchInput;
 export const KeywordChanged = (state: RootState) => state.search.keywordChanged;
-export const { setSearchInput, resetDrawerOnNavigate, setNewSearchLoaded } = SearchSlice.actions;
+export const SearchDrawerOpen = (state: RootState) => state.search.searchDrawerOpen;
+export const { setSearchInput, resetDrawerOnNavigate, setNewSearchLoaded, openSearchDrawer, closeSearchDrawer } =
+  SearchSlice.actions;
 export default SearchSlice.reducer;

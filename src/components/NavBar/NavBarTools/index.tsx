@@ -11,9 +11,10 @@ import { CartItemsCount, isCartChanged, resetCartChangedFlag } from "../../../st
 import useStyles from "./index.styles";
 import { useNavigate } from "react-router-dom";
 import { WishlistItemsCount } from "../../../store/Wishlist/WishlistSlice";
+import { closeSearchDrawer, openSearchDrawer, SearchDrawerOpen } from "../../../store/Search/SearchSlice";
 
 const NavBarTools = () => {
-  const [searchDrawerOpen, setSearchDrawerOpen] = useState(false);
+  const searchDrawerOpen = useAppSelector(SearchDrawerOpen);
   const [cartDrawerOpen, setCartDrawerOpen] = useState(false);
   const cartChanged = useAppSelector(isCartChanged);
   const cartItemsCount = useAppSelector(CartItemsCount);
@@ -26,7 +27,7 @@ const NavBarTools = () => {
     navigate("wishlist");
   };
   const handleAccount = () => {
-    navigate("account");
+    // navigate("account");
   };
 
   useEffect(() => {
@@ -38,7 +39,7 @@ const NavBarTools = () => {
 
   return (
     <Box width={"160px"} display={"flex"} justifyContent={"space-between"}>
-      <SearchIcon className={classes.navItem} sx={{ width: "24px" }} onClick={() => setSearchDrawerOpen(true)} />
+      <SearchIcon className={classes.navItem} sx={{ width: "24px" }} onClick={() => dispatch(openSearchDrawer())} />
       <PersonIcon className={classes.navItem} sx={{ width: "24px" }} onClick={handleAccount} />
       <Badge className={classes.navItem} badgeContent={wishlistItemsCount} color="primary" onClick={handleWishlist}>
         <FavoriteIcon sx={{ width: "24px" }} />
@@ -51,8 +52,8 @@ const NavBarTools = () => {
       >
         <ShoppingCartIcon sx={{ width: "24px" }} />
       </Badge>
-      <Drawer anchor="left" open={searchDrawerOpen} onClose={() => setSearchDrawerOpen(false)}>
-        <SearchDrawerContent closeDrawer={() => setSearchDrawerOpen(false)} />
+      <Drawer anchor="left" open={searchDrawerOpen} onClose={() => dispatch(closeSearchDrawer())}>
+        <SearchDrawerContent closeDrawer={() => dispatch(closeSearchDrawer())} />
       </Drawer>
       <Drawer anchor="left" open={cartDrawerOpen} onClose={() => setCartDrawerOpen(false)}>
         <CartDrawerContent closeDrawer={() => setCartDrawerOpen(false)} />

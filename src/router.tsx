@@ -11,6 +11,7 @@ import Cart from "./pages/Cart";
 import Wishlist from "./pages/Wishlist";
 import getAllSearchResultsApi from "./utils/getAllSearchResultsApi";
 import ProductType from "./types/productType";
+import Checkout from "./pages/Checkout";
 
 const productLoader = async ({ params }: LoaderFunctionArgs) => {
   const { id } = params;
@@ -51,6 +52,7 @@ const routes = [
       },
       { path: "/cart", element: <Cart /> },
       { path: "/wishlist", element: <Wishlist /> },
+      { path: "/checkout", element: <Checkout /> },
       {
         path: "/product/:id",
         element: <Product />,

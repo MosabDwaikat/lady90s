@@ -5,6 +5,7 @@ import { Box, Button, Typography } from "@mui/material";
 import Decoration from "../../assets/icons/decoration";
 import useStyles from "./index.styles";
 import ProductType from "../../types/productType";
+import { useNavigate } from "react-router-dom";
 
 interface SliderSectionProps {
   content: ProductType[];
@@ -14,8 +15,10 @@ interface SliderSectionProps {
 
 const SliderSection = ({ content, title, navLink }: SliderSectionProps) => {
   const { classes } = useStyles();
+  const navigate = useNavigate();
+
   const handleNavigate = () => {
-    console.log("navigate to " + navLink);
+    if (navLink) navigate(navLink);
   };
   return (
     <Box className={classes.sectionContainer}>

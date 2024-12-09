@@ -1,21 +1,27 @@
 import { Badge, Box, Typography } from "@mui/material";
 import React from "react";
-// import "./index.scss";
 import useStyles from "./index.styles";
+import { useNavigate } from "react-router-dom";
 
 export interface CategoryProps {
   category: {
     image: string;
     title: string;
     count: number;
+    target: string;
   };
 }
 
 const Category = ({ category }: CategoryProps) => {
   const { classes } = useStyles();
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate(category.target);
+  };
 
   return (
-    <Box className={classes.categoryContainer}>
+    <Box className={classes.categoryContainer} onClick={handleNavigate}>
       <Badge
         className={classes.categoryBadge}
         max={1000}

@@ -3,11 +3,14 @@ import CardSlider from "../CardSlider";
 import brands from "../../staticData/brands";
 import { Box } from "@mui/material";
 import useStyles from "./index.styles";
+import { useNavigate } from "react-router-dom";
 
 const Brands = () => {
   const { classes } = useStyles();
-  const handleNavigate = (name: string) => {
-    console.log(`Navigate to brand's product page: ${name}`);
+  const navigate = useNavigate();
+
+  const handleNavigate = (target: string) => {
+    navigate(target);
   };
   return (
     <Box className={classes.brandsContainer}>

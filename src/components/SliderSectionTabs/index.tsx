@@ -4,6 +4,7 @@ import TabPanel from "./TabPanel";
 import SliderSection from "../SliderSection";
 import { TabProps } from "../../staticData/tabs";
 import useStyles from "./index.styles";
+import { useNavigate } from "react-router-dom";
 
 interface SliderSectionTabsProps {
   title: string;
@@ -20,12 +21,13 @@ const a11yProps = (index: number) => {
 const SliderSectionTabs = ({ title, content }: SliderSectionTabsProps) => {
   const [value, setValue] = useState(0);
   const { classes } = useStyles();
+  const navigate = useNavigate();
 
   const handleChange = (event: SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
   const handleTabNavigate = () => {
-    console.log("navigate to " + content[value].label);
+    navigate(content[value].target);
   };
 
   return (

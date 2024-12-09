@@ -66,7 +66,8 @@ const CartSlice = createSlice({
   }
 });
 export const CartItems = (state: RootState) => state.cart.cartItems;
-export const CartItemsCount = (state: RootState) => state.cart.cartItems.length;
+export const CartLoading = (state: RootState) => (state.cart.loading === "pending" ? true : false);
+export const CartItemsCount = (state: RootState) => state.cart.cartItems.reduce((sum, item) => sum + item.quantity, 0);
 export const isCartChanged = (state: RootState) => state.cart.cartChanged;
 export const { setCartItems, addItemToCart, deleteItemFromCart, changeProductQuantity, resetCartChangedFlag } =
   CartSlice.actions;
