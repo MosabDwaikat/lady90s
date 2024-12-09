@@ -7,6 +7,11 @@ import Collection from "./pages/Collection";
 import { Collections } from "./utils/collectionContentProvider";
 import Product from "./pages/Product";
 import getProductById from "./utils/getProductById";
+import Cart from "./pages/Cart";
+import Wishlist from "./pages/Wishlist";
+import getAllSearchResultsApi from "./utils/getAllSearchResultsApi";
+import ProductType from "./types/productType";
+import Checkout from "./pages/Checkout";
 
 const productLoader = async ({ params }: LoaderFunctionArgs) => {
   const { id } = params;
@@ -21,13 +26,33 @@ const productLoader = async ({ params }: LoaderFunctionArgs) => {
   return product;
 };
 
+const searchResultsLoader = async ({ params }: LoaderFunctionArgs) => {
+  const { keyword } = params;
+  if (!keyword) {
+    throw new Error("invalid keyword");
+  }
+  const searchResults: ProductType[] = await getAllSearchResultsApi(keyword);
+
+  if (!searchResults) {
+    throw new Error("no search results found");
+  }
+  return searchResults;
+};
+
 const routes = [
   {
     path: "/",
     element: <App />,
     children: [
       { path: "/", element: <Home /> },
-      { path: "/search", element: <Search /> },
+      {
+        path: "/search/:keyword",
+        element: <Search />,
+        loader: searchResultsLoader
+      },
+      { path: "/cart", element: <Cart /> },
+      { path: "/wishlist", element: <Wishlist /> },
+      { path: "/checkout", element: <Checkout /> },
       {
         path: "/product/:id",
         element: <Product />,
@@ -40,7 +65,6 @@ const routes = [
         };
       })
     ],
-
     errorElement: <ErrorPage />
   }
 ];

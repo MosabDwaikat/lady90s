@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Badge, Box, Drawer } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
@@ -6,16 +6,20 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SearchDrawerContent from "./SearchDrawerContent";
 import CartDrawerContent from "./CartDrawerContent";
-import { useAppSelector } from "../../../store/hooks";
-import { CartItemsCount } from "../../../store/Cart/CartSlice";
-// import "./index.scss";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import { CartItemsCount, isCartChanged, resetCartChangedFlag } from "../../../store/Cart/CartSlice";
 import useStyles from "./index.styles";
 import { useNavigate } from "react-router-dom";
+import { WishlistItemsCount } from "../../../store/Wishlist/WishlistSlice";
+import { closeSearchDrawer, openSearchDrawer, SearchDrawerOpen } from "../../../store/Search/SearchSlice";
 
 const NavBarTools = () => {
-  const [searchDrawerOpen, setSearchDrawerOpen] = useState(false);
+  const searchDrawerOpen = useAppSelector(SearchDrawerOpen);
   const [cartDrawerOpen, setCartDrawerOpen] = useState(false);
+  const cartChanged = useAppSelector(isCartChanged);
   const cartItemsCount = useAppSelector(CartItemsCount);
+  const wishlistItemsCount = useAppSelector(WishlistItemsCount);
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { classes } = useStyles();
 
@@ -23,14 +27,21 @@ const NavBarTools = () => {
     navigate("wishlist");
   };
   const handleAccount = () => {
-    navigate("account");
+    // navigate("account");
   };
+
+  useEffect(() => {
+    if (cartChanged) {
+      setCartDrawerOpen(true);
+      dispatch(resetCartChangedFlag());
+    }
+  }, [cartChanged]);
 
   return (
     <Box width={"160px"} display={"flex"} justifyContent={"space-between"}>
-      <SearchIcon className={classes.navItem} sx={{ width: "24px" }} onClick={() => setSearchDrawerOpen(true)} />
+      <SearchIcon className={classes.navItem} sx={{ width: "24px" }} onClick={() => dispatch(openSearchDrawer())} />
       <PersonIcon className={classes.navItem} sx={{ width: "24px" }} onClick={handleAccount} />
-      <Badge className={classes.navItem} badgeContent={4} color="primary" onClick={handleWishlist}>
+      <Badge className={classes.navItem} badgeContent={wishlistItemsCount} color="primary" onClick={handleWishlist}>
         <FavoriteIcon sx={{ width: "24px" }} />
       </Badge>
       <Badge
@@ -41,11 +52,11 @@ const NavBarTools = () => {
       >
         <ShoppingCartIcon sx={{ width: "24px" }} />
       </Badge>
-      <Drawer anchor="left" open={searchDrawerOpen} onClose={() => setSearchDrawerOpen(false)}>
-        <SearchDrawerContent />
+      <Drawer anchor="left" open={searchDrawerOpen} onClose={() => dispatch(closeSearchDrawer())}>
+        <SearchDrawerContent closeDrawer={() => dispatch(closeSearchDrawer())} />
       </Drawer>
       <Drawer anchor="left" open={cartDrawerOpen} onClose={() => setCartDrawerOpen(false)}>
-        <CartDrawerContent />
+        <CartDrawerContent closeDrawer={() => setCartDrawerOpen(false)} />
       </Drawer>
     </Box>
   );

@@ -5,21 +5,19 @@ import useStyles from "./index.styles";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useNavigate } from "react-router-dom";
+import ProductType from "../../../types/productType";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import { addItemToCart } from "../../../store/Cart/CartSlice";
 
 export interface CustomCardProps {
-  content: {
-    id: string;
-    title: string;
-    price: number;
-    imgs: string[];
-    sales: number;
-  };
+  content: ProductType;
   details?: boolean;
 }
 
 const CustomCard = ({ details, content }: CustomCardProps) => {
   const { classes } = useStyles();
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handleQuickView = () => {
     // Handle quick view logic
@@ -27,9 +25,9 @@ const CustomCard = ({ details, content }: CustomCardProps) => {
   };
 
   const handleCart = () => {
-    // Handle adding to cart logic
-    alert("implement add to cart");
+    dispatch(addItemToCart({ product: content, quantity: 1 }));
   };
+
   const handleNavigate = () => {
     navigate("/product/" + content.id);
   };
@@ -51,7 +49,7 @@ const CustomCard = ({ details, content }: CustomCardProps) => {
           alt=""
           loading="lazy"
         />
-        <CustomCardTools detailsView={details} />
+        <CustomCardTools detailsView={details} handleCart={handleCart} content={content} />
       </Box>
       <Box className={details ? classes.cardBodyDetailsView : ""}>
         <Box>

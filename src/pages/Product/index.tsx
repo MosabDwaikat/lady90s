@@ -29,7 +29,7 @@ const Product = () => {
           <ImagesPreview imgs={product.imgs} />
         </Box>
         <Box className={classes.productDetailsContainer}>
-          <ProductDetails title={product.title} price={product.price} handleReturnPolicyOpen={handleOpen} />
+          <ProductDetails product={product} handleReturnPolicyOpen={handleOpen} />
         </Box>
       </Box>
       <Box className={classes.slidersContainer}>

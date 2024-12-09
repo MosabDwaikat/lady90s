@@ -3,19 +3,21 @@ import { RootState } from "..";
 import { getCartItemsApi } from "../../utils/getCartItemsApi";
 import { CartItemType } from "../../types/cartItemType";
 
-export const fetchCartItems = createAsyncThunk("data/fetchData", async () => {
+export const fetchCartItems = createAsyncThunk("data/fetchCartItems", async () => {
   const response = await getCartItemsApi();
   return response;
 });
 
 interface CartState {
   cartItems: CartItemType[];
-  loading: "idle" | "pending" | "succeeded" | "failed"; // 'idle', 'pending', or 'succeeded'
+  loading: "idle" | "pending" | "succeeded" | "failed";
+  cartChanged: boolean;
 }
 
 const initialState: CartState = {
   cartItems: [],
-  loading: "idle" // 'idle', 'pending', or 'succeeded'
+  loading: "idle",
+  cartChanged: false
 };
 
 const CartSlice = createSlice({
@@ -25,6 +27,16 @@ const CartSlice = createSlice({
     setCartItems: (state, action: PayloadAction<CartItemType[]>) => {
       state.cartItems = action.payload;
     },
+    addItemToCart: (state, action: PayloadAction<CartItemType>) => {
+      const existingItem = state.cartItems.find((item) => item.product.id === action.payload.product.id);
+      if (existingItem) {
+        existingItem.quantity += action.payload.quantity;
+        state.cartChanged = true;
+      } else {
+        state.cartItems.push(action.payload);
+        state.cartChanged = true;
+      }
+    },
     deleteItemFromCart: (state, action: PayloadAction<CartItemType>) => {
       state.cartItems = state.cartItems.filter((item) => item.product.id !== action.payload.product.id);
     },
@@ -33,6 +45,10 @@ const CartSlice = createSlice({
         item.product.id === action.payload.product.id ? { ...item, quantity: action.payload.quantity } : item
       );
       state.cartItems = updatedCartItems;
+      state.cartChanged = true;
+    },
+    resetCartChangedFlag: (state) => {
+      state.cartChanged = false;
     }
   },
   extraReducers: (builder) => {
@@ -50,6 +66,9 @@ const CartSlice = createSlice({
   }
 });
 export const CartItems = (state: RootState) => state.cart.cartItems;
-export const CartItemsCount = (state: RootState) => state.cart.cartItems.length;
-export const { setCartItems, deleteItemFromCart, changeProductQuantity } = CartSlice.actions;
+export const CartLoading = (state: RootState) => (state.cart.loading === "pending" ? true : false);
+export const CartItemsCount = (state: RootState) => state.cart.cartItems.reduce((sum, item) => sum + item.quantity, 0);
+export const isCartChanged = (state: RootState) => state.cart.cartChanged;
+export const { setCartItems, addItemToCart, deleteItemFromCart, changeProductQuantity, resetCartChangedFlag } =
+  CartSlice.actions;
 export default CartSlice.reducer;

@@ -8,13 +8,14 @@ import { useNavigate } from "react-router-dom";
 import useStyles from "./index.styles";
 import { CartItemType } from "../../../../types/cartItemType";
 
-const CartDrawerContent = () => {
+const CartDrawerContent = ({ closeDrawer }: { closeDrawer: () => void }) => {
   const items: CartItemType[] = useAppSelector(CartItems);
   const navigate = useNavigate();
   const { classes } = useStyles();
 
   const handleClick = (event: React.FormEvent<HTMLButtonElement>) => {
     const target = event.target as HTMLButtonElement;
+    closeDrawer();
     navigate(target.name);
   };
   const calculateSum = () => {
@@ -23,7 +24,7 @@ const CartDrawerContent = () => {
 
   return (
     <Box className={classes.mainPanel}>
-      <Box width={350}>
+      <Box className={classes.bodyPanel}>
         <Typography className={classes.cartTitle}>عربة المشتريات</Typography>
         <Box className={classes.productsPanel}>
           {items.map((item, index) => (
